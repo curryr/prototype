@@ -10,6 +10,10 @@ relationship OneToMany {
   Owner{car} to Car{owner}
 }
 
+relationship ManyToOne {
+  Car{owner} to Owner{car}
+}
+
 entity GIDUser {
 	firstName String,
 	lastName String,
