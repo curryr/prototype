@@ -20,6 +20,12 @@
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "gIDMoniker",
+            "otherEntityRelationshipName": "identity",
+            "relationshipName": "gIDMoniker"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gIDMoniker",
             "otherEntityRelationshipName": "gIDIdentity",
             "relationshipName": "standardMonikerSet"
         },
@@ -28,12 +34,6 @@
             "otherEntityName": "gIDMoniker",
             "otherEntityRelationshipName": "gIDIdentity",
             "relationshipName": "fullMonikerSet"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "user",
-            "relationshipName": "gIDMoniker"
         },
         {
             "relationshipType": "many-to-one",

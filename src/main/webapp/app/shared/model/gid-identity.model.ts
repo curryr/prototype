@@ -7,9 +7,9 @@ export interface IGIDIdentity {
   gid?: string;
   pgid?: string;
   gIDMemberships?: IGIDMembership[];
+  gIDMonikers?: IGIDMoniker[];
   standardMonikerSets?: IGIDMoniker[];
   fullMonikerSets?: IGIDMoniker[];
-  gIDMonikers?: IGIDMoniker[];
   user?: IGIDUser;
 }
 
@@ -19,9 +19,9 @@ export class GIDIdentity implements IGIDIdentity {
     public gid?: string,
     public pgid?: string,
     public gIDMemberships?: IGIDMembership[],
+    public gIDMonikers?: IGIDMoniker[],
     public standardMonikerSets?: IGIDMoniker[],
     public fullMonikerSets?: IGIDMoniker[],
-    public gIDMonikers?: IGIDMoniker[],
     public user?: IGIDUser
   ) {}
 }
