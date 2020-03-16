@@ -1,18 +1,23 @@
 entity GIDUser {
 	firstName String,
 	lastName String,
+    monikers GIDMonikerSet
 }
 
 entity GIDIdentity {
 	gid String,
 	pgid String,
+    standardMonikerSet GIDMonikerSet,
+    fullMonikerSet GIDMonikerSet,
+    monikers GIDMonikerSet
 }
 
 entity GIDMembership {
 	ogid String,
 	tenantKey String,
 	tenantUserKey String,
-    tenantUserBlock String
+    tenantUserBlock String,
+    monikers GIDMonikerSet
 }
 
 entity GIDMoniker {
@@ -25,17 +30,17 @@ enum GIDMonikerPrefix {
     LEGACY, TEL, MAILTO
 }
 
+entity GIDMonikerSet {
+}
+
 relationship OneToMany {
 	GIDUser to GIDIdentity{user},
 	GIDIdentity to GIDMembership{identity}
-    GIDMembership{monickerOf} to GIDMoniker{userOf}
-	GIDUser{monickerOf} to GIDMoniker{userOf}
-    GIDIdentity{monickerOf} to GIDMoniker{userOf}
-
-	GIDIdentity{standardMonikerSet} to GIDMoniker{contains}
-	GIDIdentity{fullMonikerSet} to GIDMoniker{contains}
 }
 
+relationship ManyToMany {
+	GIDMonikerSet to GIDMoniker
+}
 // Set pagination options
 paginate GIDUser, GIDIdentity, GIDMembership, GIDMoniker with infinite-scroll
 
