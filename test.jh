@@ -44,7 +44,7 @@ relationship OneToMany {
 }
 
 relationship ManyToMany {
-	GIDMonikerSet{monikers} to GIDMoniker{set}
+	GIDMonikerSet{monikers(moniker)} to GIDMoniker{set}
 }
 // Set pagination options
 paginate GIDUser, GIDIdentity, GIDMembership, GIDMoniker with infinite-scroll
