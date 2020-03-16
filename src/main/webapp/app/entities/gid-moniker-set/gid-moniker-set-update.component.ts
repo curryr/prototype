@@ -20,7 +20,7 @@ export class GIDMonikerSetUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    gIDMonikers: []
+    monikers: []
   });
 
   constructor(
@@ -41,7 +41,7 @@ export class GIDMonikerSetUpdateComponent implements OnInit {
   updateForm(gIDMonikerSet: IGIDMonikerSet): void {
     this.editForm.patchValue({
       id: gIDMonikerSet.id,
-      gIDMonikers: gIDMonikerSet.gIDMonikers
+      monikers: gIDMonikerSet.monikers
     });
   }
 
@@ -63,7 +63,7 @@ export class GIDMonikerSetUpdateComponent implements OnInit {
     return {
       ...new GIDMonikerSet(),
       id: this.editForm.get(['id'])!.value,
-      gIDMonikers: this.editForm.get(['gIDMonikers'])!.value
+      monikers: this.editForm.get(['monikers'])!.value
     };
   }
 

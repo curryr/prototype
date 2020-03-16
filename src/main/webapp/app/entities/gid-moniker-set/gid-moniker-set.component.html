@@ -23,7 +23,7 @@
             <thead>
                 <tr>
                     <th scope="col" ><span>ID</span></th>
-                    <th scope="col" ><span>G ID Moniker</span></th>
+                    <th scope="col" ><span>Monikers</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -31,8 +31,8 @@
                 <tr *ngFor="let gIDMonikerSet of gIDMonikerSets ;trackBy: trackId">
                     <td><a [routerLink]="['/gid-moniker-set', gIDMonikerSet.id, 'view']">{{ gIDMonikerSet.id }}</a></td>
                     <td>
-                        <span *ngFor="let gIDMoniker of gIDMonikerSet.gIDMonikers; let last = last">
-                            <a class="form-control-static" [routerLink]="['/gid-moniker', gIDMoniker?.id, 'view']">{{ gIDMoniker.id }}</a>{{ last ? '' : ', ' }}
+                        <span *ngFor="let monikers of gIDMonikerSet.monikers; let last = last">
+                            <a class="form-control-static" [routerLink]="['/gid-moniker', monikers?.id, 'view']">{{ monikers.id }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td class="text-right">

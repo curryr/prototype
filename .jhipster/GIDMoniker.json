@@ -15,8 +15,8 @@
         {
             "relationshipType": "many-to-many",
             "otherEntityName": "gIDMonikerSet",
-            "otherEntityRelationshipName": "gIDMoniker",
-            "relationshipName": "gIDMonikerSet",
+            "otherEntityRelationshipName": "monikers",
+            "relationshipName": "set",
             "otherEntityField": "id",
             "ownerSide": false
         }

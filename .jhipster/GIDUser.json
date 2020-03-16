@@ -23,7 +23,7 @@
             "relationshipType": "one-to-many",
             "otherEntityName": "gIDIdentity",
             "otherEntityRelationshipName": "user",
-            "relationshipName": "gIDIdentity"
+            "relationshipName": "identities"
         }
     ],
     "changelogDate": "20200316040300",

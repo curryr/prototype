@@ -22,10 +22,10 @@ public class GIDMonikerSet implements Serializable {
     private Long id;
 
     @ManyToMany
-    @JoinTable(name = "gid_moniker_set_gidmoniker",
+    @JoinTable(name = "gid_moniker_set_monikers",
                joinColumns = @JoinColumn(name = "gidmoniker_set_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "gidmoniker_id", referencedColumnName = "id"))
-    private Set<GIDMoniker> gIDMonikers = new HashSet<>();
+               inverseJoinColumns = @JoinColumn(name = "monikers_id", referencedColumnName = "id"))
+    private Set<GIDMoniker> monikers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -36,29 +36,29 @@ public class GIDMonikerSet implements Serializable {
         this.id = id;
     }
 
-    public Set<GIDMoniker> getGIDMonikers() {
-        return gIDMonikers;
+    public Set<GIDMoniker> getMonikers() {
+        return monikers;
     }
 
-    public GIDMonikerSet gIDMonikers(Set<GIDMoniker> gIDMonikers) {
-        this.gIDMonikers = gIDMonikers;
+    public GIDMonikerSet monikers(Set<GIDMoniker> gIDMonikers) {
+        this.monikers = gIDMonikers;
         return this;
     }
 
-    public GIDMonikerSet addGIDMoniker(GIDMoniker gIDMoniker) {
-        this.gIDMonikers.add(gIDMoniker);
-        gIDMoniker.getGIDMonikerSets().add(this);
+    public GIDMonikerSet addMonikers(GIDMoniker gIDMoniker) {
+        this.monikers.add(gIDMoniker);
+        gIDMoniker.getSets().add(this);
         return this;
     }
 
-    public GIDMonikerSet removeGIDMoniker(GIDMoniker gIDMoniker) {
-        this.gIDMonikers.remove(gIDMoniker);
-        gIDMoniker.getGIDMonikerSets().remove(this);
+    public GIDMonikerSet removeMonikers(GIDMoniker gIDMoniker) {
+        this.monikers.remove(gIDMoniker);
+        gIDMoniker.getSets().remove(this);
         return this;
     }
 
-    public void setGIDMonikers(Set<GIDMoniker> gIDMonikers) {
-        this.gIDMonikers = gIDMonikers;
+    public void setMonikers(Set<GIDMoniker> gIDMonikers) {
+        this.monikers = gIDMonikers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

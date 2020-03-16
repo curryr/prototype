@@ -17,13 +17,13 @@ import java.util.Optional;
 @Repository
 public interface GIDMonikerSetRepository extends JpaRepository<GIDMonikerSet, Long> {
 
-    @Query(value = "select distinct gIDMonikerSet from GIDMonikerSet gIDMonikerSet left join fetch gIDMonikerSet.gIDMonikers",
+    @Query(value = "select distinct gIDMonikerSet from GIDMonikerSet gIDMonikerSet left join fetch gIDMonikerSet.monikers",
         countQuery = "select count(distinct gIDMonikerSet) from GIDMonikerSet gIDMonikerSet")
     Page<GIDMonikerSet> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct gIDMonikerSet from GIDMonikerSet gIDMonikerSet left join fetch gIDMonikerSet.gIDMonikers")
+    @Query("select distinct gIDMonikerSet from GIDMonikerSet gIDMonikerSet left join fetch gIDMonikerSet.monikers")
     List<GIDMonikerSet> findAllWithEagerRelationships();
 
-    @Query("select gIDMonikerSet from GIDMonikerSet gIDMonikerSet left join fetch gIDMonikerSet.gIDMonikers where gIDMonikerSet.id =:id")
+    @Query("select gIDMonikerSet from GIDMonikerSet gIDMonikerSet left join fetch gIDMonikerSet.monikers where gIDMonikerSet.id =:id")
     Optional<GIDMonikerSet> findOneWithEagerRelationships(@Param("id") Long id);
 }

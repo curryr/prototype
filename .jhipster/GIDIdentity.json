@@ -39,12 +39,12 @@
             "relationshipType": "one-to-many",
             "otherEntityName": "gIDMembership",
             "otherEntityRelationshipName": "identity",
-            "relationshipName": "gIDMembership"
+            "relationshipName": "memberships"
         },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "gIDUser",
-            "otherEntityRelationshipName": "gIDIdentity",
+            "otherEntityRelationshipName": "identities",
             "relationshipName": "user",
             "otherEntityField": "id"
         }

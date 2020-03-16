@@ -12,9 +12,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="field_gIDMonikers">G ID Moniker</label>
-                    <select class="form-control" id="field_gIDMonikers" multiple name="gIDMonikers" formControlName="gIDMonikers">
-                        <option [ngValue]="getSelected(editForm.get('gIDMonikers')!.value, gIDMonikerOption)" *ngFor="let gIDMonikerOption of gidmonikers; trackBy: trackById">{{ gIDMonikerOption.id }}</option>
+                    <label for="field_monikers">Monikers</label>
+                    <select class="form-control" id="field_monikers" multiple name="monikers" formControlName="monikers">
+                        <option [ngValue]="getSelected(editForm.get('monikers')!.value, gIDMonikerOption)" *ngFor="let gIDMonikerOption of gidmonikers; trackBy: trackById">{{ gIDMonikerOption.id }}</option>
                     </select>
                 </div>
             </div>

@@ -9,14 +9,14 @@
     <changeSet id="20200316045500-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="gidmoniker_set_id"
-                                 baseTableName="gid_moniker_set_gidmoniker"
-                                 constraintName="fk_gid_moniker_set_gidmoniker_gid_moniker_set_id"
+                                 baseTableName="gid_moniker_set_monikers"
+                                 constraintName="fk_gid_moniker_set_monikers_gid_moniker_set_id"
                                  referencedColumnNames="id"
                                  referencedTableName="gid_moniker_set"/>
 
-        <addForeignKeyConstraint baseColumnNames="gidmoniker_id"
-                                 baseTableName="gid_moniker_set_gidmoniker"
-                                 constraintName="fk_gid_moniker_set_gidmoniker_gidmoniker_id"
+        <addForeignKeyConstraint baseColumnNames="monikers_id"
+                                 baseTableName="gid_moniker_set_monikers"
+                                 constraintName="fk_gid_moniker_set_monikers_monikers_id"
                                  referencedColumnNames="id"
                                  referencedTableName="gid_moniker"/>
         

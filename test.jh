@@ -39,12 +39,12 @@ relationship OneToOne {
 }
 
 relationship OneToMany {
-	GIDUser to GIDIdentity{user},
-	GIDIdentity to GIDMembership{identity}
+	GIDUser{identities} to GIDIdentity{user},
+	GIDIdentity{memberships} to GIDMembership{identity}
 }
 
 relationship ManyToMany {
-	GIDMonikerSet to GIDMoniker
+	GIDMonikerSet{monikers} to GIDMoniker{set}
 }
 // Set pagination options
 paginate GIDUser, GIDIdentity, GIDMembership, GIDMoniker with infinite-scroll
