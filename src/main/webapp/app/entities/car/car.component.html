@@ -26,6 +26,7 @@
                     <th scope="col" ><span>Model</span></th>
                     <th scope="col" ><span>Year</span></th>
                     <th scope="col" ><span>Owner</span></th>
+                    <th scope="col" ><span>Owner</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,6 +35,11 @@
                     <td><a [routerLink]="['/car', car.id, 'view']">{{ car.id }}</a></td>
                     <td>{{ car.model }}</td>
                     <td>{{ car.year }}</td>
+                    <td>
+                        <div *ngIf="car.owner">
+                            <a [routerLink]="['/owner', car.owner?.id, 'view']" >{{ car.owner?.id }}</a>
+                        </div>
+                    </td>
                     <td>
                         <div *ngIf="car.owner">
                             <a [routerLink]="['/owner', car.owner?.id, 'view']" >{{ car.owner?.id }}</a>

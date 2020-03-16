@@ -22,6 +22,12 @@
                         <a [routerLink]="['/owner', car.owner?.id, 'view']">{{ car.owner?.id }}</a>
                     </div>
                 </dd>
+                <dt><span>Owner</span></dt>
+                <dd>
+                    <div *ngIf="car.owner">
+                        <a [routerLink]="['/owner', car.owner?.id, 'view']">{{ car.owner?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

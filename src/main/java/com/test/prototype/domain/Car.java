@@ -30,6 +30,10 @@ public class Car implements Serializable {
     @JsonIgnoreProperties("cars")
     private Owner owner;
 
+    @ManyToOne
+    @JsonIgnoreProperties("cars")
+    private Owner owner;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -63,6 +67,19 @@ public class Car implements Serializable {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public Car owner(Owner owner) {
+        this.owner = owner;
+        return this;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public Owner getOwner() {
