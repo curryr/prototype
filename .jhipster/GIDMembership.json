@@ -1,0 +1,47 @@
+{
+    "name": "GIDMembership",
+    "fields": [
+        {
+            "fieldName": "ogid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tenantKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tenantUserKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tenantUserBlock",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gIDMoniker",
+            "otherEntityRelationshipName": "membership",
+            "relationshipName": "gIDMoniker"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "gIDIdentity",
+            "otherEntityRelationshipName": "gIDMembership",
+            "relationshipName": "identity",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200316040500",
+    "entityTableName": "gid_membership",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

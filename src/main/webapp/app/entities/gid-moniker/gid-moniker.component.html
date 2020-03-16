@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span>GID Monikers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-gid-moniker" [routerLink]="['/gid-moniker/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new GID Moniker
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="gIDMonikers?.length === 0">
+        <span>No gIDMonikers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="gIDMonikers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="moniker"><span>Moniker</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="prefix"><span>Prefix</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gIDIdentity.id"><span>G ID Identity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gIDIdentity.id"><span>G ID Identity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span>User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span>User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="membership.id"><span>Membership</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let gIDMoniker of gIDMonikers ;trackBy: trackId">
+                    <td><a [routerLink]="['/gid-moniker', gIDMoniker.id, 'view']">{{ gIDMoniker.id }}</a></td>
+                    <td>{{ gIDMoniker.moniker }}</td>
+                    <td>{{ gIDMoniker.prefix }}</td>
+                    <td>
+                        <div *ngIf="gIDMoniker.gIDIdentity">
+                            <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']" >{{ gIDMoniker.gIDIdentity?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gIDMoniker.gIDIdentity">
+                            <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']" >{{ gIDMoniker.gIDIdentity?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gIDMoniker.user">
+                            <a [routerLink]="['/gid-user', gIDMoniker.user?.id, 'view']" >{{ gIDMoniker.user?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gIDMoniker.user">
+                            <a [routerLink]="['/gid-identity', gIDMoniker.user?.id, 'view']" >{{ gIDMoniker.user?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gIDMoniker.membership">
+                            <a [routerLink]="['/gid-membership', gIDMoniker.membership?.id, 'view']" >{{ gIDMoniker.membership?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/gid-moniker', gIDMoniker.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/gid-moniker', gIDMoniker.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(gIDMoniker)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

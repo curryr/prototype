@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="gIDMoniker">
+            <h2><span>GID Moniker</span> {{ gIDMoniker.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Moniker</span></dt>
+                <dd>
+                    <span>{{ gIDMoniker.moniker }}</span>
+                </dd>
+                <dt><span>Prefix</span></dt>
+                <dd>
+                    <span>{{ gIDMoniker.prefix }}</span>
+                </dd>
+                <dt><span>G ID Identity</span></dt>
+                <dd>
+                    <div *ngIf="gIDMoniker.gIDIdentity">
+                        <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']">{{ gIDMoniker.gIDIdentity?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>G ID Identity</span></dt>
+                <dd>
+                    <div *ngIf="gIDMoniker.gIDIdentity">
+                        <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']">{{ gIDMoniker.gIDIdentity?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    <div *ngIf="gIDMoniker.user">
+                        <a [routerLink]="['/gid-user', gIDMoniker.user?.id, 'view']">{{ gIDMoniker.user?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    <div *ngIf="gIDMoniker.user">
+                        <a [routerLink]="['/gid-identity', gIDMoniker.user?.id, 'view']">{{ gIDMoniker.user?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Membership</span></dt>
+                <dd>
+                    <div *ngIf="gIDMoniker.membership">
+                        <a [routerLink]="['/gid-membership', gIDMoniker.membership?.id, 'view']">{{ gIDMoniker.membership?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/gid-moniker', gIDMoniker.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
