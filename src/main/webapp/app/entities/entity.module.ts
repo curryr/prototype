@@ -23,6 +23,14 @@ import { RouterModule } from '@angular/router';
       {
         path: 'gid-moniker-set',
         loadChildren: () => import('./gid-moniker-set/gid-moniker-set.module').then(m => m.PrototypeGIDMonikerSetModule)
+      },
+      {
+        path: 'owner',
+        loadChildren: () => import('./owner/owner.module').then(m => m.PrototypeOwnerModule)
+      },
+      {
+        path: 'car',
+        loadChildren: () => import('./car/car.module').then(m => m.PrototypeCarModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
