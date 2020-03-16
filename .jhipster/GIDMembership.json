@@ -22,8 +22,8 @@
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "membership",
-            "relationshipName": "gIDMoniker"
+            "otherEntityRelationshipName": "userOf",
+            "relationshipName": "monickerOf"
         },
         {
             "relationshipType": "many-to-one",

@@ -8,33 +8,33 @@
     -->
     <changeSet id="20200316040600-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="membership_id"
+        <addForeignKeyConstraint baseColumnNames="user_of_id"
                                  baseTableName="gid_moniker"
-                                 constraintName="fk_gid_moniker_membership_id"
+                                 constraintName="fk_gid_moniker_user_of_id"
                                  referencedColumnNames="id"
                                  referencedTableName="gid_membership"/>
 
-        <addForeignKeyConstraint baseColumnNames="user_id"
+        <addForeignKeyConstraint baseColumnNames="user_of_id"
                                  baseTableName="gid_moniker"
-                                 constraintName="fk_gid_moniker_user_id"
+                                 constraintName="fk_gid_moniker_user_of_id"
                                  referencedColumnNames="id"
                                  referencedTableName="gid_user"/>
 
-        <addForeignKeyConstraint baseColumnNames="identity_id"
+        <addForeignKeyConstraint baseColumnNames="user_of_id"
                                  baseTableName="gid_moniker"
-                                 constraintName="fk_gid_moniker_identity_id"
+                                 constraintName="fk_gid_moniker_user_of_id"
                                  referencedColumnNames="id"
                                  referencedTableName="gid_identity"/>
 
-        <addForeignKeyConstraint baseColumnNames="gididentity_id"
+        <addForeignKeyConstraint baseColumnNames="contains_id"
                                  baseTableName="gid_moniker"
-                                 constraintName="fk_gid_moniker_gididentity_id"
+                                 constraintName="fk_gid_moniker_contains_id"
                                  referencedColumnNames="id"
                                  referencedTableName="gid_identity"/>
 
-        <addForeignKeyConstraint baseColumnNames="gididentity_id"
+        <addForeignKeyConstraint baseColumnNames="contains_id"
                                  baseTableName="gid_moniker"
-                                 constraintName="fk_gid_moniker_gididentity_id"
+                                 constraintName="fk_gid_moniker_contains_id"
                                  referencedColumnNames="id"
                                  referencedTableName="gid_identity"/>
 

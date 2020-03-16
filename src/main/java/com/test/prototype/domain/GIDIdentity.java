@@ -31,13 +31,13 @@ public class GIDIdentity implements Serializable {
     @OneToMany(mappedBy = "identity")
     private Set<GIDMembership> gIDMemberships = new HashSet<>();
 
-    @OneToMany(mappedBy = "identity")
-    private Set<GIDMoniker> gIDMonikers = new HashSet<>();
+    @OneToMany(mappedBy = "userOf")
+    private Set<GIDMoniker> monickerOfs = new HashSet<>();
 
-    @OneToMany(mappedBy = "gIDIdentity")
+    @OneToMany(mappedBy = "contains")
     private Set<GIDMoniker> standardMonikerSets = new HashSet<>();
 
-    @OneToMany(mappedBy = "gIDIdentity")
+    @OneToMany(mappedBy = "contains")
     private Set<GIDMoniker> fullMonikerSets = new HashSet<>();
 
     @ManyToOne
@@ -104,29 +104,29 @@ public class GIDIdentity implements Serializable {
         this.gIDMemberships = gIDMemberships;
     }
 
-    public Set<GIDMoniker> getGIDMonikers() {
-        return gIDMonikers;
+    public Set<GIDMoniker> getMonickerOfs() {
+        return monickerOfs;
     }
 
-    public GIDIdentity gIDMonikers(Set<GIDMoniker> gIDMonikers) {
-        this.gIDMonikers = gIDMonikers;
+    public GIDIdentity monickerOfs(Set<GIDMoniker> gIDMonikers) {
+        this.monickerOfs = gIDMonikers;
         return this;
     }
 
-    public GIDIdentity addGIDMoniker(GIDMoniker gIDMoniker) {
-        this.gIDMonikers.add(gIDMoniker);
-        gIDMoniker.setIdentity(this);
+    public GIDIdentity addMonickerOf(GIDMoniker gIDMoniker) {
+        this.monickerOfs.add(gIDMoniker);
+        gIDMoniker.setUserOf(this);
         return this;
     }
 
-    public GIDIdentity removeGIDMoniker(GIDMoniker gIDMoniker) {
-        this.gIDMonikers.remove(gIDMoniker);
-        gIDMoniker.setIdentity(null);
+    public GIDIdentity removeMonickerOf(GIDMoniker gIDMoniker) {
+        this.monickerOfs.remove(gIDMoniker);
+        gIDMoniker.setUserOf(null);
         return this;
     }
 
-    public void setGIDMonikers(Set<GIDMoniker> gIDMonikers) {
-        this.gIDMonikers = gIDMonikers;
+    public void setMonickerOfs(Set<GIDMoniker> gIDMonikers) {
+        this.monickerOfs = gIDMonikers;
     }
 
     public Set<GIDMoniker> getStandardMonikerSets() {
@@ -140,13 +140,13 @@ public class GIDIdentity implements Serializable {
 
     public GIDIdentity addStandardMonikerSet(GIDMoniker gIDMoniker) {
         this.standardMonikerSets.add(gIDMoniker);
-        gIDMoniker.setGIDIdentity(this);
+        gIDMoniker.setContains(this);
         return this;
     }
 
     public GIDIdentity removeStandardMonikerSet(GIDMoniker gIDMoniker) {
         this.standardMonikerSets.remove(gIDMoniker);
-        gIDMoniker.setGIDIdentity(null);
+        gIDMoniker.setContains(null);
         return this;
     }
 
@@ -165,13 +165,13 @@ public class GIDIdentity implements Serializable {
 
     public GIDIdentity addFullMonikerSet(GIDMoniker gIDMoniker) {
         this.fullMonikerSets.add(gIDMoniker);
-        gIDMoniker.setGIDIdentity(this);
+        gIDMoniker.setContains(this);
         return this;
     }
 
     public GIDIdentity removeFullMonikerSet(GIDMoniker gIDMoniker) {
         this.fullMonikerSets.remove(gIDMoniker);
-        gIDMoniker.setGIDIdentity(null);
+        gIDMoniker.setContains(null);
         return this;
     }
 

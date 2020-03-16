@@ -16,34 +16,34 @@
                 <dd>
                     <span>{{ gIDMoniker.prefix }}</span>
                 </dd>
-                <dt><span>Membership</span></dt>
+                <dt><span>User Of</span></dt>
                 <dd>
-                    <div *ngIf="gIDMoniker.membership">
-                        <a [routerLink]="['/gid-membership', gIDMoniker.membership?.id, 'view']">{{ gIDMoniker.membership?.id }}</a>
+                    <div *ngIf="gIDMoniker.userOf">
+                        <a [routerLink]="['/gid-membership', gIDMoniker.userOf?.id, 'view']">{{ gIDMoniker.userOf?.id }}</a>
                     </div>
                 </dd>
-                <dt><span>User</span></dt>
+                <dt><span>User Of</span></dt>
                 <dd>
-                    <div *ngIf="gIDMoniker.user">
-                        <a [routerLink]="['/gid-user', gIDMoniker.user?.id, 'view']">{{ gIDMoniker.user?.id }}</a>
+                    <div *ngIf="gIDMoniker.userOf">
+                        <a [routerLink]="['/gid-user', gIDMoniker.userOf?.id, 'view']">{{ gIDMoniker.userOf?.id }}</a>
                     </div>
                 </dd>
-                <dt><span>Identity</span></dt>
+                <dt><span>User Of</span></dt>
                 <dd>
-                    <div *ngIf="gIDMoniker.identity">
-                        <a [routerLink]="['/gid-identity', gIDMoniker.identity?.id, 'view']">{{ gIDMoniker.identity?.id }}</a>
+                    <div *ngIf="gIDMoniker.userOf">
+                        <a [routerLink]="['/gid-identity', gIDMoniker.userOf?.id, 'view']">{{ gIDMoniker.userOf?.id }}</a>
                     </div>
                 </dd>
-                <dt><span>G ID Identity</span></dt>
+                <dt><span>Contains</span></dt>
                 <dd>
-                    <div *ngIf="gIDMoniker.gIDIdentity">
-                        <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']">{{ gIDMoniker.gIDIdentity?.id }}</a>
+                    <div *ngIf="gIDMoniker.contains">
+                        <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']">{{ gIDMoniker.contains?.id }}</a>
                     </div>
                 </dd>
-                <dt><span>G ID Identity</span></dt>
+                <dt><span>Contains</span></dt>
                 <dd>
-                    <div *ngIf="gIDMoniker.gIDIdentity">
-                        <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']">{{ gIDMoniker.gIDIdentity?.id }}</a>
+                    <div *ngIf="gIDMoniker.contains">
+                        <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']">{{ gIDMoniker.contains?.id }}</a>
                     </div>
                 </dd>
             </dl>

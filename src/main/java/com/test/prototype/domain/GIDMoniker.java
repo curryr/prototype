@@ -30,24 +30,24 @@ public class GIDMoniker implements Serializable {
     private GIDMonikerPrefix prefix;
 
     @ManyToOne
-    @JsonIgnoreProperties("gIDMonikers")
-    private GIDMembership membership;
+    @JsonIgnoreProperties("monickerOfs")
+    private GIDMembership userOf;
 
     @ManyToOne
-    @JsonIgnoreProperties("gIDMonikers")
-    private GIDUser user;
+    @JsonIgnoreProperties("monickerOfs")
+    private GIDUser userOf;
 
     @ManyToOne
-    @JsonIgnoreProperties("gIDMonikers")
-    private GIDIdentity identity;
-
-    @ManyToOne
-    @JsonIgnoreProperties("standardMonikerSets")
-    private GIDIdentity gIDIdentity;
+    @JsonIgnoreProperties("monickerOfs")
+    private GIDIdentity userOf;
 
     @ManyToOne
     @JsonIgnoreProperties("standardMonikerSets")
-    private GIDIdentity gIDIdentity;
+    private GIDIdentity contains;
+
+    @ManyToOne
+    @JsonIgnoreProperties("standardMonikerSets")
+    private GIDIdentity contains;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -84,69 +84,69 @@ public class GIDMoniker implements Serializable {
         this.prefix = prefix;
     }
 
-    public GIDMembership getMembership() {
-        return membership;
+    public GIDMembership getUserOf() {
+        return userOf;
     }
 
-    public GIDMoniker membership(GIDMembership gIDMembership) {
-        this.membership = gIDMembership;
+    public GIDMoniker userOf(GIDMembership gIDMembership) {
+        this.userOf = gIDMembership;
         return this;
     }
 
-    public void setMembership(GIDMembership gIDMembership) {
-        this.membership = gIDMembership;
+    public void setUserOf(GIDMembership gIDMembership) {
+        this.userOf = gIDMembership;
     }
 
-    public GIDUser getUser() {
-        return user;
+    public GIDUser getUserOf() {
+        return userOf;
     }
 
-    public GIDMoniker user(GIDUser gIDUser) {
-        this.user = gIDUser;
+    public GIDMoniker userOf(GIDUser gIDUser) {
+        this.userOf = gIDUser;
         return this;
     }
 
-    public void setUser(GIDUser gIDUser) {
-        this.user = gIDUser;
+    public void setUserOf(GIDUser gIDUser) {
+        this.userOf = gIDUser;
     }
 
-    public GIDIdentity getIdentity() {
-        return identity;
+    public GIDIdentity getUserOf() {
+        return userOf;
     }
 
-    public GIDMoniker identity(GIDIdentity gIDIdentity) {
-        this.identity = gIDIdentity;
+    public GIDMoniker userOf(GIDIdentity gIDIdentity) {
+        this.userOf = gIDIdentity;
         return this;
     }
 
-    public void setIdentity(GIDIdentity gIDIdentity) {
-        this.identity = gIDIdentity;
+    public void setUserOf(GIDIdentity gIDIdentity) {
+        this.userOf = gIDIdentity;
     }
 
-    public GIDIdentity getGIDIdentity() {
-        return gIDIdentity;
+    public GIDIdentity getContains() {
+        return contains;
     }
 
-    public GIDMoniker gIDIdentity(GIDIdentity gIDIdentity) {
-        this.gIDIdentity = gIDIdentity;
+    public GIDMoniker contains(GIDIdentity gIDIdentity) {
+        this.contains = gIDIdentity;
         return this;
     }
 
-    public void setGIDIdentity(GIDIdentity gIDIdentity) {
-        this.gIDIdentity = gIDIdentity;
+    public void setContains(GIDIdentity gIDIdentity) {
+        this.contains = gIDIdentity;
     }
 
-    public GIDIdentity getGIDIdentity() {
-        return gIDIdentity;
+    public GIDIdentity getContains() {
+        return contains;
     }
 
-    public GIDMoniker gIDIdentity(GIDIdentity gIDIdentity) {
-        this.gIDIdentity = gIDIdentity;
+    public GIDMoniker contains(GIDIdentity gIDIdentity) {
+        this.contains = gIDIdentity;
         return this;
     }
 
-    public void setGIDIdentity(GIDIdentity gIDIdentity) {
-        this.gIDIdentity = gIDIdentity;
+    public void setContains(GIDIdentity gIDIdentity) {
+        this.contains = gIDIdentity;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
