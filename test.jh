@@ -28,12 +28,12 @@ enum GIDMonikerPrefix {
 relationship OneToMany {
 	GIDUser to GIDIdentity{user},
 	GIDIdentity to GIDMembership{identity}
-    GIDIdentity{standardMonikerSet} to GIDMoniker
-	GIDIdentity{fullMonikerSet} to GIDMoniker
-
-	GIDUser to GIDMoniker{user}
-    GIDIdentity to GIDMoniker{user}
     GIDMembership to GIDMoniker{membership}
+	GIDUser to GIDMoniker{user}
+    GIDIdentity to GIDMoniker{identity}
+
+	GIDIdentity{standardMonikerSet} to GIDMoniker
+	GIDIdentity{fullMonikerSet} to GIDMoniker
 }
 
 // Set pagination options
