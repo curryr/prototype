@@ -32,7 +32,7 @@
                     <td><a [routerLink]="['/gid-moniker-set', gIDMonikerSet.id, 'view']">{{ gIDMonikerSet.id }}</a></td>
                     <td>
                         <span *ngFor="let monikers of gIDMonikerSet.monikers; let last = last">
-                            <a class="form-control-static" [routerLink]="['/gid-moniker', monikers?.id, 'view']">{{ monikers.id }}</a>{{ last ? '' : ', ' }}
+                            <a class="form-control-static" [routerLink]="['/gid-moniker', monikers?.id, 'view']">{{ monikers.moniker }}</a>{{ last ? '' : ', ' }}
                         </span>
                     </td>
                     <td class="text-right">

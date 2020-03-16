@@ -11,7 +11,7 @@
                 <dt><span>Monikers</span></dt>
                 <dd>
                     <span *ngFor="let monikers of gIDMonikerSet.monikers; let last = last">
-                        <a [routerLink]="['/gid-moniker', monikers?.id, 'view']">{{ monikers.id }}</a>{{ last ? '' : ', ' }}
+                        <a [routerLink]="['/gid-moniker', monikers?.id, 'view']">{{ monikers.moniker }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
             </dl>

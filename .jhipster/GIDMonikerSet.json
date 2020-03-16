@@ -7,7 +7,7 @@
             "otherEntityName": "gIDMoniker",
             "otherEntityRelationshipName": "set",
             "relationshipName": "monikers",
-            "otherEntityField": "id",
+            "otherEntityField": "moniker",
             "ownerSide": true
         }
     ],
