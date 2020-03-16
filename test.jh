@@ -1,3 +1,15 @@
+entity Owner {
+	name: String
+}
+entity Car {
+	model: String,
+    year: String
+}
+
+relationship OneToMany {
+  Owner{car} to Car{owner}
+}
+
 entity GIDUser {
 	firstName String,
 	lastName String,
