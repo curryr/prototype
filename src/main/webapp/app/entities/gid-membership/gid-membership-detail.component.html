@@ -33,7 +33,7 @@
                 <dt><span>Identity</span></dt>
                 <dd>
                     <div *ngIf="gIDMembership.identity">
-                        <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']">{{ gIDMembership.identity?.ogid }}</a>
+                        <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']">{{ gIDMembership.identity?.pgid }}</a>
                     </div>
                 </dd>
             </dl>
