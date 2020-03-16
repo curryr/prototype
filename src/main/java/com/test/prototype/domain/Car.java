@@ -28,7 +28,7 @@ public class Car implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("cars")
-    private Owner owner;
+    private Owner ownedBy;
 
     @ManyToOne
     @JsonIgnoreProperties("cars")
@@ -69,17 +69,17 @@ public class Car implements Serializable {
         this.year = year;
     }
 
-    public Owner getOwner() {
-        return owner;
+    public Owner getOwnedBy() {
+        return ownedBy;
     }
 
-    public Car owner(Owner owner) {
-        this.owner = owner;
+    public Car ownedBy(Owner owner) {
+        this.ownedBy = owner;
         return this;
     }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
+    public void setOwnedBy(Owner owner) {
+        this.ownedBy = owner;
     }
 
     public Owner getOwner() {

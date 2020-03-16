@@ -22,7 +22,7 @@ export class CarUpdateComponent implements OnInit {
     id: [],
     model: [],
     year: [],
-    owner: [],
+    ownedBy: [],
     owner: []
   });
 
@@ -46,7 +46,7 @@ export class CarUpdateComponent implements OnInit {
       id: car.id,
       model: car.model,
       year: car.year,
-      owner: car.owner,
+      ownedBy: car.ownedBy,
       owner: car.owner
     });
   }
@@ -71,7 +71,7 @@ export class CarUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       model: this.editForm.get(['model'])!.value,
       year: this.editForm.get(['year'])!.value,
-      owner: this.editForm.get(['owner'])!.value,
+      ownedBy: this.editForm.get(['ownedBy'])!.value,
       owner: this.editForm.get(['owner'])!.value
     };
   }
