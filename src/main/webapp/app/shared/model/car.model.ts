@@ -4,10 +4,10 @@ export interface ICar {
   id?: number;
   model?: string;
   year?: string;
-  owner?: IOwner;
+  ownedBy?: IOwner;
   owner?: IOwner;
 }
 
 export class Car implements ICar {
-  constructor(public id?: number, public model?: string, public year?: string, public owner?: IOwner, public owner?: IOwner) {}
+  constructor(public id?: number, public model?: string, public year?: string, public ownedBy?: IOwner, public owner?: IOwner) {}
 }

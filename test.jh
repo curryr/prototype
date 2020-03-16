@@ -11,7 +11,7 @@ relationship OneToMany {
 }
 
 relationship ManyToOne {
-  Car{owner} to Owner
+  Car{ownedBy} to Owner
 }
 
 entity GIDUser {
