@@ -17,6 +17,13 @@
             "otherEntityRelationshipName": "car",
             "relationshipName": "owner",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "owner",
+            "otherEntityRelationshipName": "car",
+            "relationshipName": "owner",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20200316222500",
