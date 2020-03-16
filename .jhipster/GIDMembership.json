@@ -32,7 +32,7 @@
             "otherEntityName": "gIDIdentity",
             "otherEntityRelationshipName": "memberships",
             "relationshipName": "identity",
-            "otherEntityField": "ogid"
+            "otherEntityField": "pgid"
         }
     ],
     "changelogDate": "20200316040500",
