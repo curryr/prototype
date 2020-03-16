@@ -28,7 +28,7 @@
                     <th scope="col"  jhiSortBy="tenantUserKey"><span>Tenant User Key</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tenantUserBlock"><span>Tenant User Block</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="monickers.id"><span>Monickers</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="identity.id"><span>Identity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="identity.ogid"><span>Identity</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -46,7 +46,7 @@
                     </td>
                     <td>
                         <div *ngIf="gIDMembership.identity">
-                            <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']" >{{ gIDMembership.identity?.id }}</a>
+                            <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']" >{{ gIDMembership.identity?.ogid }}</a>
                         </div>
                     </td>
                     <td class="text-right">

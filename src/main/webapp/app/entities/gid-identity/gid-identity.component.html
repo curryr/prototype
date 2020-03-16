@@ -28,7 +28,7 @@
                     <th scope="col"  jhiSortBy="monickers.id"><span>Monickers</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="fullMonikerSet.id"><span>Full Moniker Set</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="standardMonikerSet.id"><span>Standard Moniker Set</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="user.id"><span>User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.firstName"><span>User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -54,7 +54,7 @@
                     </td>
                     <td>
                         <div *ngIf="gIDIdentity.user">
-                            <a [routerLink]="['/gid-user', gIDIdentity.user?.id, 'view']" >{{ gIDIdentity.user?.id }}</a>
+                            <a [routerLink]="['/gid-user', gIDIdentity.user?.id, 'view']" >{{ gIDIdentity.user?.firstName }}</a>
                         </div>
                     </td>
                     <td class="text-right">
