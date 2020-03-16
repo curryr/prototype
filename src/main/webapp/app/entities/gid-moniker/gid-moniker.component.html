@@ -25,11 +25,11 @@
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="moniker"><span>Moniker</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="prefix"><span>Prefix</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="membership.id"><span>Membership</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="user.id"><span>User</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="identity.id"><span>Identity</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="gIDIdentity.id"><span>G ID Identity</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="gIDIdentity.id"><span>G ID Identity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="userOf.id"><span>User Of</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="userOf.id"><span>User Of</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="userOf.id"><span>User Of</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="contains.id"><span>Contains</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="contains.id"><span>Contains</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -39,28 +39,28 @@
                     <td>{{ gIDMoniker.moniker }}</td>
                     <td>{{ gIDMoniker.prefix }}</td>
                     <td>
-                        <div *ngIf="gIDMoniker.membership">
-                            <a [routerLink]="['/gid-membership', gIDMoniker.membership?.id, 'view']" >{{ gIDMoniker.membership?.id }}</a>
+                        <div *ngIf="gIDMoniker.userOf">
+                            <a [routerLink]="['/gid-membership', gIDMoniker.userOf?.id, 'view']" >{{ gIDMoniker.userOf?.id }}</a>
                         </div>
                     </td>
                     <td>
-                        <div *ngIf="gIDMoniker.user">
-                            <a [routerLink]="['/gid-user', gIDMoniker.user?.id, 'view']" >{{ gIDMoniker.user?.id }}</a>
+                        <div *ngIf="gIDMoniker.userOf">
+                            <a [routerLink]="['/gid-user', gIDMoniker.userOf?.id, 'view']" >{{ gIDMoniker.userOf?.id }}</a>
                         </div>
                     </td>
                     <td>
-                        <div *ngIf="gIDMoniker.identity">
-                            <a [routerLink]="['/gid-identity', gIDMoniker.identity?.id, 'view']" >{{ gIDMoniker.identity?.id }}</a>
+                        <div *ngIf="gIDMoniker.userOf">
+                            <a [routerLink]="['/gid-identity', gIDMoniker.userOf?.id, 'view']" >{{ gIDMoniker.userOf?.id }}</a>
                         </div>
                     </td>
                     <td>
-                        <div *ngIf="gIDMoniker.gIDIdentity">
-                            <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']" >{{ gIDMoniker.gIDIdentity?.id }}</a>
+                        <div *ngIf="gIDMoniker.contains">
+                            <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']" >{{ gIDMoniker.contains?.id }}</a>
                         </div>
                     </td>
                     <td>
-                        <div *ngIf="gIDMoniker.gIDIdentity">
-                            <a [routerLink]="['/gid-identity', gIDMoniker.gIDIdentity?.id, 'view']" >{{ gIDMoniker.gIDIdentity?.id }}</a>
+                        <div *ngIf="gIDMoniker.contains">
+                            <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']" >{{ gIDMoniker.contains?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

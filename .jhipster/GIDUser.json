@@ -20,8 +20,8 @@
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "user",
-            "relationshipName": "gIDMoniker"
+            "otherEntityRelationshipName": "userOf",
+            "relationshipName": "monickerOf"
         }
     ],
     "changelogDate": "20200316040300",

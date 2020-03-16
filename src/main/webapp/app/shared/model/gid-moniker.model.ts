@@ -7,11 +7,11 @@ export interface IGIDMoniker {
   id?: number;
   moniker?: string;
   prefix?: GIDMonikerPrefix;
-  membership?: IGIDMembership;
-  user?: IGIDUser;
-  identity?: IGIDIdentity;
-  gIDIdentity?: IGIDIdentity;
-  gIDIdentity?: IGIDIdentity;
+  userOf?: IGIDMembership;
+  userOf?: IGIDUser;
+  userOf?: IGIDIdentity;
+  contains?: IGIDIdentity;
+  contains?: IGIDIdentity;
 }
 
 export class GIDMoniker implements IGIDMoniker {
@@ -19,10 +19,10 @@ export class GIDMoniker implements IGIDMoniker {
     public id?: number,
     public moniker?: string,
     public prefix?: GIDMonikerPrefix,
-    public membership?: IGIDMembership,
-    public user?: IGIDUser,
-    public identity?: IGIDIdentity,
-    public gIDIdentity?: IGIDIdentity,
-    public gIDIdentity?: IGIDIdentity
+    public userOf?: IGIDMembership,
+    public userOf?: IGIDUser,
+    public userOf?: IGIDIdentity,
+    public contains?: IGIDIdentity,
+    public contains?: IGIDIdentity
   ) {}
 }

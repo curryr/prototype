@@ -30,11 +30,11 @@ export class GIDMonikerUpdateComponent implements OnInit {
     id: [],
     moniker: [],
     prefix: [],
-    membership: [],
-    user: [],
-    identity: [],
-    gIDIdentity: [],
-    gIDIdentity: []
+    userOf: [],
+    userOf: [],
+    userOf: [],
+    contains: [],
+    contains: []
   });
 
   constructor(
@@ -63,11 +63,11 @@ export class GIDMonikerUpdateComponent implements OnInit {
       id: gIDMoniker.id,
       moniker: gIDMoniker.moniker,
       prefix: gIDMoniker.prefix,
-      membership: gIDMoniker.membership,
-      user: gIDMoniker.user,
-      identity: gIDMoniker.identity,
-      gIDIdentity: gIDMoniker.gIDIdentity,
-      gIDIdentity: gIDMoniker.gIDIdentity
+      userOf: gIDMoniker.userOf,
+      userOf: gIDMoniker.userOf,
+      userOf: gIDMoniker.userOf,
+      contains: gIDMoniker.contains,
+      contains: gIDMoniker.contains
     });
   }
 
@@ -91,11 +91,11 @@ export class GIDMonikerUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       moniker: this.editForm.get(['moniker'])!.value,
       prefix: this.editForm.get(['prefix'])!.value,
-      membership: this.editForm.get(['membership'])!.value,
-      user: this.editForm.get(['user'])!.value,
-      identity: this.editForm.get(['identity'])!.value,
-      gIDIdentity: this.editForm.get(['gIDIdentity'])!.value,
-      gIDIdentity: this.editForm.get(['gIDIdentity'])!.value
+      userOf: this.editForm.get(['userOf'])!.value,
+      userOf: this.editForm.get(['userOf'])!.value,
+      userOf: this.editForm.get(['userOf'])!.value,
+      contains: this.editForm.get(['contains'])!.value,
+      contains: this.editForm.get(['contains'])!.value
     };
   }
 
