@@ -4,11 +4,16 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IGIDMembership, GIDMembership } from 'app/shared/model/gid-membership.model';
 import { GIDMembershipService } from './gid-membership.service';
+import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
+import { GIDMonikerSetService } from 'app/entities/gid-moniker-set/gid-moniker-set.service';
 import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
 import { GIDIdentityService } from 'app/entities/gid-identity/gid-identity.service';
+
+type SelectableEntity = IGIDMonikerSet | IGIDIdentity;
 
 @Component({
   selector: 'jhi-gid-membership-update',
@@ -16,6 +21,7 @@ import { GIDIdentityService } from 'app/entities/gid-identity/gid-identity.servi
 })
 export class GIDMembershipUpdateComponent implements OnInit {
   isSaving = false;
+  monickers: IGIDMonikerSet[] = [];
   gididentities: IGIDIdentity[] = [];
 
   editForm = this.fb.group({
@@ -24,11 +30,13 @@ export class GIDMembershipUpdateComponent implements OnInit {
     tenantKey: [],
     tenantUserKey: [],
     tenantUserBlock: [],
+    monickers: [],
     identity: []
   });
 
   constructor(
     protected gIDMembershipService: GIDMembershipService,
+    protected gIDMonikerSetService: GIDMonikerSetService,
     protected gIDIdentityService: GIDIdentityService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -37,6 +45,28 @@ export class GIDMembershipUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ gIDMembership }) => {
       this.updateForm(gIDMembership);
+
+      this.gIDMonikerSetService
+        .query({ filter: 'gidmembership-is-null' })
+        .pipe(
+          map((res: HttpResponse<IGIDMonikerSet[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IGIDMonikerSet[]) => {
+          if (!gIDMembership.monickers || !gIDMembership.monickers.id) {
+            this.monickers = resBody;
+          } else {
+            this.gIDMonikerSetService
+              .find(gIDMembership.monickers.id)
+              .pipe(
+                map((subRes: HttpResponse<IGIDMonikerSet>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monickers = concatRes));
+          }
+        });
 
       this.gIDIdentityService.query().subscribe((res: HttpResponse<IGIDIdentity[]>) => (this.gididentities = res.body || []));
     });
@@ -49,6 +79,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
       tenantKey: gIDMembership.tenantKey,
       tenantUserKey: gIDMembership.tenantUserKey,
       tenantUserBlock: gIDMembership.tenantUserBlock,
+      monickers: gIDMembership.monickers,
       identity: gIDMembership.identity
     });
   }
@@ -75,6 +106,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
       tenantKey: this.editForm.get(['tenantKey'])!.value,
       tenantUserKey: this.editForm.get(['tenantUserKey'])!.value,
       tenantUserBlock: this.editForm.get(['tenantUserBlock'])!.value,
+      monickers: this.editForm.get(['monickers'])!.value,
       identity: this.editForm.get(['identity'])!.value
     };
   }
@@ -95,7 +127,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IGIDIdentity): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

@@ -6,8 +6,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A GIDMembership.
@@ -34,8 +32,9 @@ public class GIDMembership implements Serializable {
     @Column(name = "tenant_user_block")
     private String tenantUserBlock;
 
-    @OneToMany(mappedBy = "userOf")
-    private Set<GIDMoniker> monickerOfs = new HashSet<>();
+    @OneToOne
+    @JoinColumn(unique = true)
+    private GIDMonikerSet monickers;
 
     @ManyToOne
     @JsonIgnoreProperties("gIDMemberships")
@@ -102,29 +101,17 @@ public class GIDMembership implements Serializable {
         this.tenantUserBlock = tenantUserBlock;
     }
 
-    public Set<GIDMoniker> getMonickerOfs() {
-        return monickerOfs;
+    public GIDMonikerSet getMonickers() {
+        return monickers;
     }
 
-    public GIDMembership monickerOfs(Set<GIDMoniker> gIDMonikers) {
-        this.monickerOfs = gIDMonikers;
+    public GIDMembership monickers(GIDMonikerSet gIDMonikerSet) {
+        this.monickers = gIDMonikerSet;
         return this;
     }
 
-    public GIDMembership addMonickerOf(GIDMoniker gIDMoniker) {
-        this.monickerOfs.add(gIDMoniker);
-        gIDMoniker.setUserOf(this);
-        return this;
-    }
-
-    public GIDMembership removeMonickerOf(GIDMoniker gIDMoniker) {
-        this.monickerOfs.remove(gIDMoniker);
-        gIDMoniker.setUserOf(null);
-        return this;
-    }
-
-    public void setMonickerOfs(Set<GIDMoniker> gIDMonikers) {
-        this.monickerOfs = gIDMonikers;
+    public void setMonickers(GIDMonikerSet gIDMonikerSet) {
+        this.monickers = gIDMonikerSet;
     }
 
     public GIDIdentity getIdentity() {

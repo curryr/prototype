@@ -25,6 +25,7 @@
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="firstName"><span>First Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="lastName"><span>Last Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="monickers.id"><span>Monickers</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -33,6 +34,11 @@
                     <td><a [routerLink]="['/gid-user', gIDUser.id, 'view']">{{ gIDUser.id }}</a></td>
                     <td>{{ gIDUser.firstName }}</td>
                     <td>{{ gIDUser.lastName }}</td>
+                    <td>
+                        <div *ngIf="gIDUser.monickers">
+                            <a [routerLink]="['/gid-moniker-set', gIDUser.monickers?.id, 'view']" >{{ gIDUser.monickers?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

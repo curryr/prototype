@@ -27,6 +27,7 @@
                     <th scope="col"  jhiSortBy="tenantKey"><span>Tenant Key</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tenantUserKey"><span>Tenant User Key</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tenantUserBlock"><span>Tenant User Block</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="monickers.id"><span>Monickers</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="identity.id"><span>Identity</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -38,6 +39,11 @@
                     <td>{{ gIDMembership.tenantKey }}</td>
                     <td>{{ gIDMembership.tenantUserKey }}</td>
                     <td>{{ gIDMembership.tenantUserBlock }}</td>
+                    <td>
+                        <div *ngIf="gIDMembership.monickers">
+                            <a [routerLink]="['/gid-moniker-set', gIDMembership.monickers?.id, 'view']" >{{ gIDMembership.monickers?.id }}</a>
+                        </div>
+                    </td>
                     <td>
                         <div *ngIf="gIDMembership.identity">
                             <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']" >{{ gIDMembership.identity?.id }}</a>

@@ -24,6 +24,12 @@
                 <dd>
                     <span>{{ gIDMembership.tenantUserBlock }}</span>
                 </dd>
+                <dt><span>Monickers</span></dt>
+                <dd>
+                    <div *ngIf="gIDMembership.monickers">
+                        <a [routerLink]="['/gid-moniker-set', gIDMembership.monickers?.id, 'view']">{{ gIDMembership.monickers?.id }}</a>
+                    </div>
+                </dd>
                 <dt><span>Identity</span></dt>
                 <dd>
                     <div *ngIf="gIDMembership.identity">

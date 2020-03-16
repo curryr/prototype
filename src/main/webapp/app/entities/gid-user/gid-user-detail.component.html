@@ -16,6 +16,12 @@
                 <dd>
                     <span>{{ gIDUser.lastName }}</span>
                 </dd>
+                <dt><span>Monickers</span></dt>
+                <dd>
+                    <div *ngIf="gIDUser.monickers">
+                        <a [routerLink]="['/gid-moniker-set', gIDUser.monickers?.id, 'view']">{{ gIDUser.monickers?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -18,9 +18,12 @@
     <include file="config/liquibase/changelog/20200316040400_added_entity_GIDIdentity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200316040500_added_entity_GIDMembership.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200316040600_added_entity_GIDMoniker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200316045500_added_entity_GIDMonikerSet.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200316040400_added_entity_constraints_GIDIdentity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200316040500_added_entity_constraints_GIDMembership.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200316040600_added_entity_constraints_GIDMoniker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200316040300_added_entity_constraints_GIDUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200316045500_added_entity_constraints_GIDMonikerSet.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -1,15 +1,15 @@
+import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
 import { IGIDMembership } from 'app/shared/model/gid-membership.model';
-import { IGIDMoniker } from 'app/shared/model/gid-moniker.model';
 import { IGIDUser } from 'app/shared/model/gid-user.model';
 
 export interface IGIDIdentity {
   id?: number;
   gid?: string;
   pgid?: string;
+  monickers?: IGIDMonikerSet;
+  fullMonikerSet?: IGIDMonikerSet;
+  standardMonikerSet?: IGIDMonikerSet;
   gIDMemberships?: IGIDMembership[];
-  monickerOfs?: IGIDMoniker[];
-  standardMonikerSets?: IGIDMoniker[];
-  fullMonikerSets?: IGIDMoniker[];
   user?: IGIDUser;
 }
 
@@ -18,10 +18,10 @@ export class GIDIdentity implements IGIDIdentity {
     public id?: number,
     public gid?: string,
     public pgid?: string,
+    public monickers?: IGIDMonikerSet,
+    public fullMonikerSet?: IGIDMonikerSet,
+    public standardMonikerSet?: IGIDMonikerSet,
     public gIDMemberships?: IGIDMembership[],
-    public monickerOfs?: IGIDMoniker[],
-    public standardMonikerSets?: IGIDMoniker[],
-    public fullMonikerSets?: IGIDMoniker[],
     public user?: IGIDUser
   ) {}
 }

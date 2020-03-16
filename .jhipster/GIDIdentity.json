@@ -12,28 +12,34 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "gIDMonikerSet",
+            "otherEntityRelationshipName": "gIDIdentity",
+            "relationshipName": "monickers",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "gIDMonikerSet",
+            "otherEntityRelationshipName": "gIDIdentity",
+            "relationshipName": "fullMonikerSet",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "gIDMonikerSet",
+            "otherEntityRelationshipName": "gIDIdentity",
+            "relationshipName": "standardMonikerSet",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "one-to-many",
             "otherEntityName": "gIDMembership",
             "otherEntityRelationshipName": "identity",
             "relationshipName": "gIDMembership"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "userOf",
-            "relationshipName": "monickerOf"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "contains",
-            "relationshipName": "standardMonikerSet"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "contains",
-            "relationshipName": "fullMonikerSet"
         },
         {
             "relationshipType": "many-to-one",

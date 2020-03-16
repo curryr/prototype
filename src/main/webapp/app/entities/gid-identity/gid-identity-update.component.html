@@ -24,6 +24,30 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" for="field_monickers">Monickers</label>
+                    <select class="form-control" id="field_monickers" name="monickers" formControlName="monickers">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="gIDMonikerSetOption.id === editForm.get('monickers')!.value?.id ? editForm.get('monickers')!.value : gIDMonikerSetOption" *ngFor="let gIDMonikerSetOption of monickers; trackBy: trackById">{{ gIDMonikerSetOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fullMonikerSet">Full Moniker Set</label>
+                    <select class="form-control" id="field_fullMonikerSet" name="fullMonikerSet" formControlName="fullMonikerSet">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="gIDMonikerSetOption.id === editForm.get('fullMonikerSet')!.value?.id ? editForm.get('fullMonikerSet')!.value : gIDMonikerSetOption" *ngFor="let gIDMonikerSetOption of fullmonikersets; trackBy: trackById">{{ gIDMonikerSetOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_standardMonikerSet">Standard Moniker Set</label>
+                    <select class="form-control" id="field_standardMonikerSet" name="standardMonikerSet" formControlName="standardMonikerSet">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="gIDMonikerSetOption.id === editForm.get('standardMonikerSet')!.value?.id ? editForm.get('standardMonikerSet')!.value : gIDMonikerSetOption" *ngFor="let gIDMonikerSetOption of standardmonikersets; trackBy: trackById">{{ gIDMonikerSetOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" formControlName="user">
                         <option [ngValue]="null"></option>

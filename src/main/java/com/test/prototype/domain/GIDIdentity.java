@@ -28,17 +28,20 @@ public class GIDIdentity implements Serializable {
     @Column(name = "pgid")
     private String pgid;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private GIDMonikerSet monickers;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private GIDMonikerSet fullMonikerSet;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private GIDMonikerSet standardMonikerSet;
+
     @OneToMany(mappedBy = "identity")
     private Set<GIDMembership> gIDMemberships = new HashSet<>();
-
-    @OneToMany(mappedBy = "userOf")
-    private Set<GIDMoniker> monickerOfs = new HashSet<>();
-
-    @OneToMany(mappedBy = "contains")
-    private Set<GIDMoniker> standardMonikerSets = new HashSet<>();
-
-    @OneToMany(mappedBy = "contains")
-    private Set<GIDMoniker> fullMonikerSets = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("gIDIdentities")
@@ -79,6 +82,45 @@ public class GIDIdentity implements Serializable {
         this.pgid = pgid;
     }
 
+    public GIDMonikerSet getMonickers() {
+        return monickers;
+    }
+
+    public GIDIdentity monickers(GIDMonikerSet gIDMonikerSet) {
+        this.monickers = gIDMonikerSet;
+        return this;
+    }
+
+    public void setMonickers(GIDMonikerSet gIDMonikerSet) {
+        this.monickers = gIDMonikerSet;
+    }
+
+    public GIDMonikerSet getFullMonikerSet() {
+        return fullMonikerSet;
+    }
+
+    public GIDIdentity fullMonikerSet(GIDMonikerSet gIDMonikerSet) {
+        this.fullMonikerSet = gIDMonikerSet;
+        return this;
+    }
+
+    public void setFullMonikerSet(GIDMonikerSet gIDMonikerSet) {
+        this.fullMonikerSet = gIDMonikerSet;
+    }
+
+    public GIDMonikerSet getStandardMonikerSet() {
+        return standardMonikerSet;
+    }
+
+    public GIDIdentity standardMonikerSet(GIDMonikerSet gIDMonikerSet) {
+        this.standardMonikerSet = gIDMonikerSet;
+        return this;
+    }
+
+    public void setStandardMonikerSet(GIDMonikerSet gIDMonikerSet) {
+        this.standardMonikerSet = gIDMonikerSet;
+    }
+
     public Set<GIDMembership> getGIDMemberships() {
         return gIDMemberships;
     }
@@ -102,81 +144,6 @@ public class GIDIdentity implements Serializable {
 
     public void setGIDMemberships(Set<GIDMembership> gIDMemberships) {
         this.gIDMemberships = gIDMemberships;
-    }
-
-    public Set<GIDMoniker> getMonickerOfs() {
-        return monickerOfs;
-    }
-
-    public GIDIdentity monickerOfs(Set<GIDMoniker> gIDMonikers) {
-        this.monickerOfs = gIDMonikers;
-        return this;
-    }
-
-    public GIDIdentity addMonickerOf(GIDMoniker gIDMoniker) {
-        this.monickerOfs.add(gIDMoniker);
-        gIDMoniker.setUserOf(this);
-        return this;
-    }
-
-    public GIDIdentity removeMonickerOf(GIDMoniker gIDMoniker) {
-        this.monickerOfs.remove(gIDMoniker);
-        gIDMoniker.setUserOf(null);
-        return this;
-    }
-
-    public void setMonickerOfs(Set<GIDMoniker> gIDMonikers) {
-        this.monickerOfs = gIDMonikers;
-    }
-
-    public Set<GIDMoniker> getStandardMonikerSets() {
-        return standardMonikerSets;
-    }
-
-    public GIDIdentity standardMonikerSets(Set<GIDMoniker> gIDMonikers) {
-        this.standardMonikerSets = gIDMonikers;
-        return this;
-    }
-
-    public GIDIdentity addStandardMonikerSet(GIDMoniker gIDMoniker) {
-        this.standardMonikerSets.add(gIDMoniker);
-        gIDMoniker.setContains(this);
-        return this;
-    }
-
-    public GIDIdentity removeStandardMonikerSet(GIDMoniker gIDMoniker) {
-        this.standardMonikerSets.remove(gIDMoniker);
-        gIDMoniker.setContains(null);
-        return this;
-    }
-
-    public void setStandardMonikerSets(Set<GIDMoniker> gIDMonikers) {
-        this.standardMonikerSets = gIDMonikers;
-    }
-
-    public Set<GIDMoniker> getFullMonikerSets() {
-        return fullMonikerSets;
-    }
-
-    public GIDIdentity fullMonikerSets(Set<GIDMoniker> gIDMonikers) {
-        this.fullMonikerSets = gIDMonikers;
-        return this;
-    }
-
-    public GIDIdentity addFullMonikerSet(GIDMoniker gIDMoniker) {
-        this.fullMonikerSets.add(gIDMoniker);
-        gIDMoniker.setContains(this);
-        return this;
-    }
-
-    public GIDIdentity removeFullMonikerSet(GIDMoniker gIDMoniker) {
-        this.fullMonikerSets.remove(gIDMoniker);
-        gIDMoniker.setContains(null);
-        return this;
-    }
-
-    public void setFullMonikerSets(Set<GIDMoniker> gIDMonikers) {
-        this.fullMonikerSets = gIDMonikers;
     }
 
     public GIDUser getUser() {

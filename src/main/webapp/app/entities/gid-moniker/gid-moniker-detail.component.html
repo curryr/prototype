@@ -16,36 +16,6 @@
                 <dd>
                     <span>{{ gIDMoniker.prefix }}</span>
                 </dd>
-                <dt><span>User Of</span></dt>
-                <dd>
-                    <div *ngIf="gIDMoniker.userOf">
-                        <a [routerLink]="['/gid-membership', gIDMoniker.userOf?.id, 'view']">{{ gIDMoniker.userOf?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span>User Of</span></dt>
-                <dd>
-                    <div *ngIf="gIDMoniker.userOf">
-                        <a [routerLink]="['/gid-user', gIDMoniker.userOf?.id, 'view']">{{ gIDMoniker.userOf?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span>User Of</span></dt>
-                <dd>
-                    <div *ngIf="gIDMoniker.userOf">
-                        <a [routerLink]="['/gid-identity', gIDMoniker.userOf?.id, 'view']">{{ gIDMoniker.userOf?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span>Contains</span></dt>
-                <dd>
-                    <div *ngIf="gIDMoniker.contains">
-                        <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']">{{ gIDMoniker.contains?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span>Contains</span></dt>
-                <dd>
-                    <div *ngIf="gIDMoniker.contains">
-                        <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']">{{ gIDMoniker.contains?.id }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

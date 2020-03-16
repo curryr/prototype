@@ -20,10 +20,12 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "userOf",
-            "relationshipName": "monickerOf"
+            "relationshipType": "one-to-one",
+            "otherEntityName": "gIDMonikerSet",
+            "otherEntityRelationshipName": "gIDMembership",
+            "relationshipName": "monickers",
+            "otherEntityField": "id",
+            "ownerSide": true
         },
         {
             "relationshipType": "many-to-one",

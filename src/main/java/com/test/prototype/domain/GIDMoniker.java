@@ -1,11 +1,13 @@
 package com.test.prototype.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.test.prototype.domain.enumeration.GIDMonikerPrefix;
 
@@ -29,25 +31,9 @@ public class GIDMoniker implements Serializable {
     @Column(name = "prefix")
     private GIDMonikerPrefix prefix;
 
-    @ManyToOne
-    @JsonIgnoreProperties("monickerOfs")
-    private GIDMembership userOf;
-
-    @ManyToOne
-    @JsonIgnoreProperties("monickerOfs")
-    private GIDUser userOf;
-
-    @ManyToOne
-    @JsonIgnoreProperties("monickerOfs")
-    private GIDIdentity userOf;
-
-    @ManyToOne
-    @JsonIgnoreProperties("standardMonikerSets")
-    private GIDIdentity contains;
-
-    @ManyToOne
-    @JsonIgnoreProperties("standardMonikerSets")
-    private GIDIdentity contains;
+    @ManyToMany(mappedBy = "gIDMonikers")
+    @JsonIgnore
+    private Set<GIDMonikerSet> gIDMonikerSets = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -84,69 +70,29 @@ public class GIDMoniker implements Serializable {
         this.prefix = prefix;
     }
 
-    public GIDMembership getUserOf() {
-        return userOf;
+    public Set<GIDMonikerSet> getGIDMonikerSets() {
+        return gIDMonikerSets;
     }
 
-    public GIDMoniker userOf(GIDMembership gIDMembership) {
-        this.userOf = gIDMembership;
+    public GIDMoniker gIDMonikerSets(Set<GIDMonikerSet> gIDMonikerSets) {
+        this.gIDMonikerSets = gIDMonikerSets;
         return this;
     }
 
-    public void setUserOf(GIDMembership gIDMembership) {
-        this.userOf = gIDMembership;
-    }
-
-    public GIDUser getUserOf() {
-        return userOf;
-    }
-
-    public GIDMoniker userOf(GIDUser gIDUser) {
-        this.userOf = gIDUser;
+    public GIDMoniker addGIDMonikerSet(GIDMonikerSet gIDMonikerSet) {
+        this.gIDMonikerSets.add(gIDMonikerSet);
+        gIDMonikerSet.getGIDMonikers().add(this);
         return this;
     }
 
-    public void setUserOf(GIDUser gIDUser) {
-        this.userOf = gIDUser;
-    }
-
-    public GIDIdentity getUserOf() {
-        return userOf;
-    }
-
-    public GIDMoniker userOf(GIDIdentity gIDIdentity) {
-        this.userOf = gIDIdentity;
+    public GIDMoniker removeGIDMonikerSet(GIDMonikerSet gIDMonikerSet) {
+        this.gIDMonikerSets.remove(gIDMonikerSet);
+        gIDMonikerSet.getGIDMonikers().remove(this);
         return this;
     }
 
-    public void setUserOf(GIDIdentity gIDIdentity) {
-        this.userOf = gIDIdentity;
-    }
-
-    public GIDIdentity getContains() {
-        return contains;
-    }
-
-    public GIDMoniker contains(GIDIdentity gIDIdentity) {
-        this.contains = gIDIdentity;
-        return this;
-    }
-
-    public void setContains(GIDIdentity gIDIdentity) {
-        this.contains = gIDIdentity;
-    }
-
-    public GIDIdentity getContains() {
-        return contains;
-    }
-
-    public GIDMoniker contains(GIDIdentity gIDIdentity) {
-        this.contains = gIDIdentity;
-        return this;
-    }
-
-    public void setContains(GIDIdentity gIDIdentity) {
-        this.contains = gIDIdentity;
+    public void setGIDMonikerSets(Set<GIDMonikerSet> gIDMonikerSets) {
+        this.gIDMonikerSets = gIDMonikerSets;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

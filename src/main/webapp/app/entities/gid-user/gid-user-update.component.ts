@@ -4,9 +4,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IGIDUser, GIDUser } from 'app/shared/model/gid-user.model';
 import { GIDUserService } from './gid-user.service';
+import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
+import { GIDMonikerSetService } from 'app/entities/gid-moniker-set/gid-moniker-set.service';
 
 @Component({
   selector: 'jhi-gid-user-update',
@@ -14,18 +17,47 @@ import { GIDUserService } from './gid-user.service';
 })
 export class GIDUserUpdateComponent implements OnInit {
   isSaving = false;
+  monickers: IGIDMonikerSet[] = [];
 
   editForm = this.fb.group({
     id: [],
     firstName: [],
-    lastName: []
+    lastName: [],
+    monickers: []
   });
 
-  constructor(protected gIDUserService: GIDUserService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected gIDUserService: GIDUserService,
+    protected gIDMonikerSetService: GIDMonikerSetService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ gIDUser }) => {
       this.updateForm(gIDUser);
+
+      this.gIDMonikerSetService
+        .query({ filter: 'giduser-is-null' })
+        .pipe(
+          map((res: HttpResponse<IGIDMonikerSet[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IGIDMonikerSet[]) => {
+          if (!gIDUser.monickers || !gIDUser.monickers.id) {
+            this.monickers = resBody;
+          } else {
+            this.gIDMonikerSetService
+              .find(gIDUser.monickers.id)
+              .pipe(
+                map((subRes: HttpResponse<IGIDMonikerSet>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monickers = concatRes));
+          }
+        });
     });
   }
 
@@ -33,7 +65,8 @@ export class GIDUserUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: gIDUser.id,
       firstName: gIDUser.firstName,
-      lastName: gIDUser.lastName
+      lastName: gIDUser.lastName,
+      monickers: gIDUser.monickers
     });
   }
 
@@ -56,7 +89,8 @@ export class GIDUserUpdateComponent implements OnInit {
       ...new GIDUser(),
       id: this.editForm.get(['id'])!.value,
       firstName: this.editForm.get(['firstName'])!.value,
-      lastName: this.editForm.get(['lastName'])!.value
+      lastName: this.editForm.get(['lastName'])!.value,
+      monickers: this.editForm.get(['monickers'])!.value
     };
   }
 
@@ -74,5 +108,9 @@ export class GIDUserUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IGIDMonikerSet): any {
+    return item.id;
   }
 }

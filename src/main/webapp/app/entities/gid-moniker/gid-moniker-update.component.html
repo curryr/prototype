@@ -25,46 +25,6 @@
                         <option value="MAILTO">MAILTO</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_userOf">User Of</label>
-                    <select class="form-control" id="field_userOf" name="userOf" formControlName="userOf">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDMembershipOption.id === editForm.get('userOf')!.value?.id ? editForm.get('userOf')!.value : gIDMembershipOption" *ngFor="let gIDMembershipOption of gidmemberships; trackBy: trackById">{{ gIDMembershipOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_userOf">User Of</label>
-                    <select class="form-control" id="field_userOf" name="userOf" formControlName="userOf">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDUserOption.id === editForm.get('userOf')!.value?.id ? editForm.get('userOf')!.value : gIDUserOption" *ngFor="let gIDUserOption of gidusers; trackBy: trackById">{{ gIDUserOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_userOf">User Of</label>
-                    <select class="form-control" id="field_userOf" name="userOf" formControlName="userOf">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDIdentityOption.id === editForm.get('userOf')!.value?.id ? editForm.get('userOf')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_contains">Contains</label>
-                    <select class="form-control" id="field_contains" name="contains" formControlName="contains">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDIdentityOption.id === editForm.get('contains')!.value?.id ? editForm.get('contains')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_contains">Contains</label>
-                    <select class="form-control" id="field_contains" name="contains" formControlName="contains">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDIdentityOption.id === editForm.get('contains')!.value?.id ? editForm.get('contains')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

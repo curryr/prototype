@@ -8,6 +8,24 @@
     -->
     <changeSet id="20200316040400-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="monickers_id"
+                                 baseTableName="gid_identity"
+                                 constraintName="fk_gid_identity_monickers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gid_moniker_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="full_moniker_set_id"
+                                 baseTableName="gid_identity"
+                                 constraintName="fk_gid_identity_full_moniker_set_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gid_moniker_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="standard_moniker_set_id"
+                                 baseTableName="gid_identity"
+                                 constraintName="fk_gid_identity_standard_moniker_set_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gid_moniker_set"/>
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="gid_identity"
                                  constraintName="fk_gid_identity_user_id"
