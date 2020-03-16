@@ -27,11 +27,12 @@ public class GIDUser implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private GIDMonikerSet monickers;
+
     @OneToMany(mappedBy = "user")
     private Set<GIDIdentity> gIDIdentities = new HashSet<>();
-
-    @OneToMany(mappedBy = "userOf")
-    private Set<GIDMoniker> monickerOfs = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -68,6 +69,19 @@ public class GIDUser implements Serializable {
         this.lastName = lastName;
     }
 
+    public GIDMonikerSet getMonickers() {
+        return monickers;
+    }
+
+    public GIDUser monickers(GIDMonikerSet gIDMonikerSet) {
+        this.monickers = gIDMonikerSet;
+        return this;
+    }
+
+    public void setMonickers(GIDMonikerSet gIDMonikerSet) {
+        this.monickers = gIDMonikerSet;
+    }
+
     public Set<GIDIdentity> getGIDIdentities() {
         return gIDIdentities;
     }
@@ -91,31 +105,6 @@ public class GIDUser implements Serializable {
 
     public void setGIDIdentities(Set<GIDIdentity> gIDIdentities) {
         this.gIDIdentities = gIDIdentities;
-    }
-
-    public Set<GIDMoniker> getMonickerOfs() {
-        return monickerOfs;
-    }
-
-    public GIDUser monickerOfs(Set<GIDMoniker> gIDMonikers) {
-        this.monickerOfs = gIDMonikers;
-        return this;
-    }
-
-    public GIDUser addMonickerOf(GIDMoniker gIDMoniker) {
-        this.monickerOfs.add(gIDMoniker);
-        gIDMoniker.setUserOf(this);
-        return this;
-    }
-
-    public GIDUser removeMonickerOf(GIDMoniker gIDMoniker) {
-        this.monickerOfs.remove(gIDMoniker);
-        gIDMoniker.setUserOf(null);
-        return this;
-    }
-
-    public void setMonickerOfs(Set<GIDMoniker> gIDMonikers) {
-        this.monickerOfs = gIDMonikers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

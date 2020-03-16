@@ -1,0 +1,25 @@
+{
+    "name": "GIDMonikerSet",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "gIDMoniker",
+            "otherEntityRelationshipName": "gIDMonikerSet",
+            "relationshipName": "gIDMoniker",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200316045500",
+    "entityTableName": "gid_moniker_set",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

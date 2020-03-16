@@ -13,39 +13,12 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "gIDMembership",
-            "otherEntityRelationshipName": "monickerOf",
-            "relationshipName": "userOf",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "gIDUser",
-            "otherEntityRelationshipName": "monickerOf",
-            "relationshipName": "userOf",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "gIDIdentity",
-            "otherEntityRelationshipName": "monickerOf",
-            "relationshipName": "userOf",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "gIDIdentity",
-            "otherEntityRelationshipName": "standardMonikerSet",
-            "relationshipName": "contains",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "gIDIdentity",
-            "otherEntityRelationshipName": "fullMonikerSet",
-            "relationshipName": "contains",
-            "otherEntityField": "id"
+            "relationshipType": "many-to-many",
+            "otherEntityName": "gIDMonikerSet",
+            "otherEntityRelationshipName": "gIDMoniker",
+            "relationshipName": "gIDMonikerSet",
+            "otherEntityField": "id",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200316040600",

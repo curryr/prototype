@@ -1,4 +1,4 @@
-import { IGIDMoniker } from 'app/shared/model/gid-moniker.model';
+import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
 import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
 
 export interface IGIDMembership {
@@ -7,7 +7,7 @@ export interface IGIDMembership {
   tenantKey?: string;
   tenantUserKey?: string;
   tenantUserBlock?: string;
-  monickerOfs?: IGIDMoniker[];
+  monickers?: IGIDMonikerSet;
   identity?: IGIDIdentity;
 }
 
@@ -18,7 +18,7 @@ export class GIDMembership implements IGIDMembership {
     public tenantKey?: string,
     public tenantUserKey?: string,
     public tenantUserBlock?: string,
-    public monickerOfs?: IGIDMoniker[],
+    public monickers?: IGIDMonikerSet,
     public identity?: IGIDIdentity
   ) {}
 }

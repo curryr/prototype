@@ -1,12 +1,12 @@
+import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
 import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
-import { IGIDMoniker } from 'app/shared/model/gid-moniker.model';
 
 export interface IGIDUser {
   id?: number;
   firstName?: string;
   lastName?: string;
+  monickers?: IGIDMonikerSet;
   gIDIdentities?: IGIDIdentity[];
-  monickerOfs?: IGIDMoniker[];
 }
 
 export class GIDUser implements IGIDUser {
@@ -14,7 +14,7 @@ export class GIDUser implements IGIDUser {
     public id?: number,
     public firstName?: string,
     public lastName?: string,
-    public gIDIdentities?: IGIDIdentity[],
-    public monickerOfs?: IGIDMoniker[]
+    public monickers?: IGIDMonikerSet,
+    public gIDIdentities?: IGIDIdentity[]
   ) {}
 }

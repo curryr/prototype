@@ -7,14 +7,6 @@ import { Observable } from 'rxjs';
 
 import { IGIDMoniker, GIDMoniker } from 'app/shared/model/gid-moniker.model';
 import { GIDMonikerService } from './gid-moniker.service';
-import { IGIDMembership } from 'app/shared/model/gid-membership.model';
-import { GIDMembershipService } from 'app/entities/gid-membership/gid-membership.service';
-import { IGIDUser } from 'app/shared/model/gid-user.model';
-import { GIDUserService } from 'app/entities/gid-user/gid-user.service';
-import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
-import { GIDIdentityService } from 'app/entities/gid-identity/gid-identity.service';
-
-type SelectableEntity = IGIDMembership | IGIDUser | IGIDIdentity;
 
 @Component({
   selector: 'jhi-gid-moniker-update',
@@ -22,39 +14,18 @@ type SelectableEntity = IGIDMembership | IGIDUser | IGIDIdentity;
 })
 export class GIDMonikerUpdateComponent implements OnInit {
   isSaving = false;
-  gidmemberships: IGIDMembership[] = [];
-  gidusers: IGIDUser[] = [];
-  gididentities: IGIDIdentity[] = [];
 
   editForm = this.fb.group({
     id: [],
     moniker: [],
-    prefix: [],
-    userOf: [],
-    userOf: [],
-    userOf: [],
-    contains: [],
-    contains: []
+    prefix: []
   });
 
-  constructor(
-    protected gIDMonikerService: GIDMonikerService,
-    protected gIDMembershipService: GIDMembershipService,
-    protected gIDUserService: GIDUserService,
-    protected gIDIdentityService: GIDIdentityService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected gIDMonikerService: GIDMonikerService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ gIDMoniker }) => {
       this.updateForm(gIDMoniker);
-
-      this.gIDMembershipService.query().subscribe((res: HttpResponse<IGIDMembership[]>) => (this.gidmemberships = res.body || []));
-
-      this.gIDUserService.query().subscribe((res: HttpResponse<IGIDUser[]>) => (this.gidusers = res.body || []));
-
-      this.gIDIdentityService.query().subscribe((res: HttpResponse<IGIDIdentity[]>) => (this.gididentities = res.body || []));
     });
   }
 
@@ -62,12 +33,7 @@ export class GIDMonikerUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: gIDMoniker.id,
       moniker: gIDMoniker.moniker,
-      prefix: gIDMoniker.prefix,
-      userOf: gIDMoniker.userOf,
-      userOf: gIDMoniker.userOf,
-      userOf: gIDMoniker.userOf,
-      contains: gIDMoniker.contains,
-      contains: gIDMoniker.contains
+      prefix: gIDMoniker.prefix
     });
   }
 
@@ -90,12 +56,7 @@ export class GIDMonikerUpdateComponent implements OnInit {
       ...new GIDMoniker(),
       id: this.editForm.get(['id'])!.value,
       moniker: this.editForm.get(['moniker'])!.value,
-      prefix: this.editForm.get(['prefix'])!.value,
-      userOf: this.editForm.get(['userOf'])!.value,
-      userOf: this.editForm.get(['userOf'])!.value,
-      userOf: this.editForm.get(['userOf'])!.value,
-      contains: this.editForm.get(['contains'])!.value,
-      contains: this.editForm.get(['contains'])!.value
+      prefix: this.editForm.get(['prefix'])!.value
     };
   }
 
@@ -113,9 +74,5 @@ export class GIDMonikerUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: SelectableEntity): any {
-    return item.id;
   }
 }

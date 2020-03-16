@@ -25,6 +25,9 @@
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="gid"><span>Gid</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="pgid"><span>Pgid</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="monickers.id"><span>Monickers</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fullMonikerSet.id"><span>Full Moniker Set</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="standardMonikerSet.id"><span>Standard Moniker Set</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="user.id"><span>User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -34,6 +37,21 @@
                     <td><a [routerLink]="['/gid-identity', gIDIdentity.id, 'view']">{{ gIDIdentity.id }}</a></td>
                     <td>{{ gIDIdentity.gid }}</td>
                     <td>{{ gIDIdentity.pgid }}</td>
+                    <td>
+                        <div *ngIf="gIDIdentity.monickers">
+                            <a [routerLink]="['/gid-moniker-set', gIDIdentity.monickers?.id, 'view']" >{{ gIDIdentity.monickers?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gIDIdentity.fullMonikerSet">
+                            <a [routerLink]="['/gid-moniker-set', gIDIdentity.fullMonikerSet?.id, 'view']" >{{ gIDIdentity.fullMonikerSet?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gIDIdentity.standardMonikerSet">
+                            <a [routerLink]="['/gid-moniker-set', gIDIdentity.standardMonikerSet?.id, 'view']" >{{ gIDIdentity.standardMonikerSet?.id }}</a>
+                        </div>
+                    </td>
                     <td>
                         <div *ngIf="gIDIdentity.user">
                             <a [routerLink]="['/gid-user', gIDIdentity.user?.id, 'view']" >{{ gIDIdentity.user?.id }}</a>

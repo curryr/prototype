@@ -25,11 +25,6 @@
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="moniker"><span>Moniker</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="prefix"><span>Prefix</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="userOf.id"><span>User Of</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="userOf.id"><span>User Of</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="userOf.id"><span>User Of</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="contains.id"><span>Contains</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="contains.id"><span>Contains</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -38,31 +33,6 @@
                     <td><a [routerLink]="['/gid-moniker', gIDMoniker.id, 'view']">{{ gIDMoniker.id }}</a></td>
                     <td>{{ gIDMoniker.moniker }}</td>
                     <td>{{ gIDMoniker.prefix }}</td>
-                    <td>
-                        <div *ngIf="gIDMoniker.userOf">
-                            <a [routerLink]="['/gid-membership', gIDMoniker.userOf?.id, 'view']" >{{ gIDMoniker.userOf?.id }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="gIDMoniker.userOf">
-                            <a [routerLink]="['/gid-user', gIDMoniker.userOf?.id, 'view']" >{{ gIDMoniker.userOf?.id }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="gIDMoniker.userOf">
-                            <a [routerLink]="['/gid-identity', gIDMoniker.userOf?.id, 'view']" >{{ gIDMoniker.userOf?.id }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="gIDMoniker.contains">
-                            <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']" >{{ gIDMoniker.contains?.id }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="gIDMoniker.contains">
-                            <a [routerLink]="['/gid-identity', gIDMoniker.contains?.id, 'view']" >{{ gIDMoniker.contains?.id }}</a>
-                        </div>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

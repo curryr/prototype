@@ -12,16 +12,18 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "gIDMonikerSet",
+            "otherEntityRelationshipName": "gIDUser",
+            "relationshipName": "monickers",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "one-to-many",
             "otherEntityName": "gIDIdentity",
             "otherEntityRelationshipName": "user",
             "relationshipName": "gIDIdentity"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "gIDMoniker",
-            "otherEntityRelationshipName": "userOf",
-            "relationshipName": "monickerOf"
         }
     ],
     "changelogDate": "20200316040300",
