@@ -46,7 +46,7 @@
             "otherEntityName": "gIDUser",
             "otherEntityRelationshipName": "identities",
             "relationshipName": "user",
-            "otherEntityField": "id"
+            "otherEntityField": "firstName"
         }
     ],
     "changelogDate": "20200316040400",

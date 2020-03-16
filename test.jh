@@ -55,8 +55,8 @@ relationship OneToOne {
 }
 
 relationship OneToMany {
-	GIDUser{identities} to GIDIdentity{user},
-	GIDIdentity{memberships} to GIDMembership{identity}
+	GIDUser{identities(pgid)} to GIDIdentity{user(firstName)},
+	GIDIdentity{memberships(tenantKey)} to GIDMembership{identity(ogid)}
 }
 
 relationship ManyToMany {

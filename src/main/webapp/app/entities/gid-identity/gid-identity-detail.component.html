@@ -37,7 +37,7 @@
                 <dt><span>User</span></dt>
                 <dd>
                     <div *ngIf="gIDIdentity.user">
-                        <a [routerLink]="['/gid-user', gIDIdentity.user?.id, 'view']">{{ gIDIdentity.user?.id }}</a>
+                        <a [routerLink]="['/gid-user', gIDIdentity.user?.id, 'view']">{{ gIDIdentity.user?.firstName }}</a>
                     </div>
                 </dd>
             </dl>
