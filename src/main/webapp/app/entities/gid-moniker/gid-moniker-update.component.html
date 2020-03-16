@@ -27,18 +27,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_gIDIdentity">G ID Identity</label>
-                    <select class="form-control" id="field_gIDIdentity" name="gIDIdentity" formControlName="gIDIdentity">
+                    <label class="form-control-label" for="field_membership">Membership</label>
+                    <select class="form-control" id="field_membership" name="membership" formControlName="membership">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDIdentityOption.id === editForm.get('gIDIdentity')!.value?.id ? editForm.get('gIDIdentity')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_gIDIdentity">G ID Identity</label>
-                    <select class="form-control" id="field_gIDIdentity" name="gIDIdentity" formControlName="gIDIdentity">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDIdentityOption.id === editForm.get('gIDIdentity')!.value?.id ? editForm.get('gIDIdentity')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
+                        <option [ngValue]="gIDMembershipOption.id === editForm.get('membership')!.value?.id ? editForm.get('membership')!.value : gIDMembershipOption" *ngFor="let gIDMembershipOption of gidmemberships; trackBy: trackById">{{ gIDMembershipOption.id }}</option>
                     </select>
                 </div>
 
@@ -51,18 +43,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                    <label class="form-control-label" for="field_identity">Identity</label>
+                    <select class="form-control" id="field_identity" name="identity" formControlName="identity">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDIdentityOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
+                        <option [ngValue]="gIDIdentityOption.id === editForm.get('identity')!.value?.id ? editForm.get('identity')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_membership">Membership</label>
-                    <select class="form-control" id="field_membership" name="membership" formControlName="membership">
+                    <label class="form-control-label" for="field_gIDIdentity">G ID Identity</label>
+                    <select class="form-control" id="field_gIDIdentity" name="gIDIdentity" formControlName="gIDIdentity">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDMembershipOption.id === editForm.get('membership')!.value?.id ? editForm.get('membership')!.value : gIDMembershipOption" *ngFor="let gIDMembershipOption of gidmemberships; trackBy: trackById">{{ gIDMembershipOption.id }}</option>
+                        <option [ngValue]="gIDIdentityOption.id === editForm.get('gIDIdentity')!.value?.id ? editForm.get('gIDIdentity')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_gIDIdentity">G ID Identity</label>
+                    <select class="form-control" id="field_gIDIdentity" name="gIDIdentity" formControlName="gIDIdentity">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="gIDIdentityOption.id === editForm.get('gIDIdentity')!.value?.id ? editForm.get('gIDIdentity')!.value : gIDIdentityOption" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.id }}</option>
                     </select>
                 </div>
             </div>

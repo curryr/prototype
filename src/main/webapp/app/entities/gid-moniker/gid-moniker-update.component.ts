@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 
 import { IGIDMoniker, GIDMoniker } from 'app/shared/model/gid-moniker.model';
 import { GIDMonikerService } from './gid-moniker.service';
-import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
-import { GIDIdentityService } from 'app/entities/gid-identity/gid-identity.service';
-import { IGIDUser } from 'app/shared/model/gid-user.model';
-import { GIDUserService } from 'app/entities/gid-user/gid-user.service';
 import { IGIDMembership } from 'app/shared/model/gid-membership.model';
 import { GIDMembershipService } from 'app/entities/gid-membership/gid-membership.service';
+import { IGIDUser } from 'app/shared/model/gid-user.model';
+import { GIDUserService } from 'app/entities/gid-user/gid-user.service';
+import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
+import { GIDIdentityService } from 'app/entities/gid-identity/gid-identity.service';
 
-type SelectableEntity = IGIDIdentity | IGIDUser | IGIDMembership;
+type SelectableEntity = IGIDMembership | IGIDUser | IGIDIdentity;
 
 @Component({
   selector: 'jhi-gid-moniker-update',
@@ -22,26 +22,26 @@ type SelectableEntity = IGIDIdentity | IGIDUser | IGIDMembership;
 })
 export class GIDMonikerUpdateComponent implements OnInit {
   isSaving = false;
-  gididentities: IGIDIdentity[] = [];
-  gidusers: IGIDUser[] = [];
   gidmemberships: IGIDMembership[] = [];
+  gidusers: IGIDUser[] = [];
+  gididentities: IGIDIdentity[] = [];
 
   editForm = this.fb.group({
     id: [],
     moniker: [],
     prefix: [],
-    gIDIdentity: [],
-    gIDIdentity: [],
+    membership: [],
     user: [],
-    user: [],
-    membership: []
+    identity: [],
+    gIDIdentity: [],
+    gIDIdentity: []
   });
 
   constructor(
     protected gIDMonikerService: GIDMonikerService,
-    protected gIDIdentityService: GIDIdentityService,
-    protected gIDUserService: GIDUserService,
     protected gIDMembershipService: GIDMembershipService,
+    protected gIDUserService: GIDUserService,
+    protected gIDIdentityService: GIDIdentityService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -50,11 +50,11 @@ export class GIDMonikerUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ gIDMoniker }) => {
       this.updateForm(gIDMoniker);
 
-      this.gIDIdentityService.query().subscribe((res: HttpResponse<IGIDIdentity[]>) => (this.gididentities = res.body || []));
+      this.gIDMembershipService.query().subscribe((res: HttpResponse<IGIDMembership[]>) => (this.gidmemberships = res.body || []));
 
       this.gIDUserService.query().subscribe((res: HttpResponse<IGIDUser[]>) => (this.gidusers = res.body || []));
 
-      this.gIDMembershipService.query().subscribe((res: HttpResponse<IGIDMembership[]>) => (this.gidmemberships = res.body || []));
+      this.gIDIdentityService.query().subscribe((res: HttpResponse<IGIDIdentity[]>) => (this.gididentities = res.body || []));
     });
   }
 
@@ -63,11 +63,11 @@ export class GIDMonikerUpdateComponent implements OnInit {
       id: gIDMoniker.id,
       moniker: gIDMoniker.moniker,
       prefix: gIDMoniker.prefix,
-      gIDIdentity: gIDMoniker.gIDIdentity,
-      gIDIdentity: gIDMoniker.gIDIdentity,
+      membership: gIDMoniker.membership,
       user: gIDMoniker.user,
-      user: gIDMoniker.user,
-      membership: gIDMoniker.membership
+      identity: gIDMoniker.identity,
+      gIDIdentity: gIDMoniker.gIDIdentity,
+      gIDIdentity: gIDMoniker.gIDIdentity
     });
   }
 
@@ -91,11 +91,11 @@ export class GIDMonikerUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       moniker: this.editForm.get(['moniker'])!.value,
       prefix: this.editForm.get(['prefix'])!.value,
-      gIDIdentity: this.editForm.get(['gIDIdentity'])!.value,
-      gIDIdentity: this.editForm.get(['gIDIdentity'])!.value,
+      membership: this.editForm.get(['membership'])!.value,
       user: this.editForm.get(['user'])!.value,
-      user: this.editForm.get(['user'])!.value,
-      membership: this.editForm.get(['membership'])!.value
+      identity: this.editForm.get(['identity'])!.value,
+      gIDIdentity: this.editForm.get(['gIDIdentity'])!.value,
+      gIDIdentity: this.editForm.get(['gIDIdentity'])!.value
     };
   }
 
