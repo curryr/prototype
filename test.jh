@@ -1,0 +1,49 @@
+entity GIDUser {
+	firstName String,
+	lastName String,
+}
+
+entity GIDIdentity {
+	gid String,
+	pgid String,
+}
+
+entity GIDMembership {
+	ogid String,
+	tenantKey String,
+	tenantUserKey String,
+    tenantUserBlock String
+}
+
+entity GIDMoniker {
+	moniker String,
+	prefix String,
+    prefix GIDMonikerPrefix
+}
+
+enum GIDMonikerPrefix {
+    LEGACY, TEL, MAILTO
+}
+
+relationship OneToMany {
+	GIDUser to GIDIdentity{user},
+	GIDIdentity to GIDMembership{identity}
+    GIDIdentity{standardMonikerSet} to GIDMoniker
+	GIDIdentity{fullMonikerSet} to GIDMoniker
+
+	GIDUser to GIDMoniker{user}
+    GIDIdentity to GIDMoniker{user}
+    GIDMembership to GIDMoniker{membership}
+}
+
+// Set pagination options
+paginate GIDUser, GIDIdentity, GIDMembership, GIDMoniker with infinite-scroll
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

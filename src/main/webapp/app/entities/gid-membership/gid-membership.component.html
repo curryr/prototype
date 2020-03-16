@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span>GID Memberships</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-gid-membership" [routerLink]="['/gid-membership/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new GID Membership
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="gIDMemberships?.length === 0">
+        <span>No gIDMemberships found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="gIDMemberships?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ogid"><span>Ogid</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tenantKey"><span>Tenant Key</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tenantUserKey"><span>Tenant User Key</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tenantUserBlock"><span>Tenant User Block</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="identity.id"><span>Identity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let gIDMembership of gIDMemberships ;trackBy: trackId">
+                    <td><a [routerLink]="['/gid-membership', gIDMembership.id, 'view']">{{ gIDMembership.id }}</a></td>
+                    <td>{{ gIDMembership.ogid }}</td>
+                    <td>{{ gIDMembership.tenantKey }}</td>
+                    <td>{{ gIDMembership.tenantUserKey }}</td>
+                    <td>{{ gIDMembership.tenantUserBlock }}</td>
+                    <td>
+                        <div *ngIf="gIDMembership.identity">
+                            <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']" >{{ gIDMembership.identity?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/gid-membership', gIDMembership.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/gid-membership', gIDMembership.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(gIDMembership)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

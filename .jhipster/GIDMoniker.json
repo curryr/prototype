@@ -1,0 +1,62 @@
+{
+    "name": "GIDMoniker",
+    "fields": [
+        {
+            "fieldName": "moniker",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prefix",
+            "fieldType": "GIDMonikerPrefix",
+            "fieldValues": "LEGACY,TEL,MAILTO"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "gIDIdentity",
+            "otherEntityRelationshipName": "standardMonikerSet",
+            "relationshipName": "gIDIdentity",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "gIDIdentity",
+            "otherEntityRelationshipName": "fullMonikerSet",
+            "relationshipName": "gIDIdentity",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "gIDUser",
+            "otherEntityRelationshipName": "gIDMoniker",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "gIDIdentity",
+            "otherEntityRelationshipName": "gIDMoniker",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "gIDMembership",
+            "otherEntityRelationshipName": "gIDMoniker",
+            "relationshipName": "membership",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200316040600",
+    "entityTableName": "gid_moniker",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

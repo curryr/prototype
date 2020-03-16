@@ -1,0 +1,38 @@
+{
+    "name": "GIDUser",
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gIDIdentity",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "gIDIdentity"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gIDMoniker",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "gIDMoniker"
+        }
+    ],
+    "changelogDate": "20200316040300",
+    "entityTableName": "gid_user",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

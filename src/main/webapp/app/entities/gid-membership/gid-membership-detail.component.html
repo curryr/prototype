@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="gIDMembership">
+            <h2><span>GID Membership</span> {{ gIDMembership.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ogid</span></dt>
+                <dd>
+                    <span>{{ gIDMembership.ogid }}</span>
+                </dd>
+                <dt><span>Tenant Key</span></dt>
+                <dd>
+                    <span>{{ gIDMembership.tenantKey }}</span>
+                </dd>
+                <dt><span>Tenant User Key</span></dt>
+                <dd>
+                    <span>{{ gIDMembership.tenantUserKey }}</span>
+                </dd>
+                <dt><span>Tenant User Block</span></dt>
+                <dd>
+                    <span>{{ gIDMembership.tenantUserBlock }}</span>
+                </dd>
+                <dt><span>Identity</span></dt>
+                <dd>
+                    <div *ngIf="gIDMembership.identity">
+                        <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']">{{ gIDMembership.identity?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/gid-membership', gIDMembership.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
