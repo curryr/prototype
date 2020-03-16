@@ -31,9 +31,9 @@ public class GIDMoniker implements Serializable {
     @Column(name = "prefix")
     private GIDMonikerPrefix prefix;
 
-    @ManyToMany(mappedBy = "gIDMonikers")
+    @ManyToMany(mappedBy = "monikers")
     @JsonIgnore
-    private Set<GIDMonikerSet> gIDMonikerSets = new HashSet<>();
+    private Set<GIDMonikerSet> sets = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -70,29 +70,29 @@ public class GIDMoniker implements Serializable {
         this.prefix = prefix;
     }
 
-    public Set<GIDMonikerSet> getGIDMonikerSets() {
-        return gIDMonikerSets;
+    public Set<GIDMonikerSet> getSets() {
+        return sets;
     }
 
-    public GIDMoniker gIDMonikerSets(Set<GIDMonikerSet> gIDMonikerSets) {
-        this.gIDMonikerSets = gIDMonikerSets;
+    public GIDMoniker sets(Set<GIDMonikerSet> gIDMonikerSets) {
+        this.sets = gIDMonikerSets;
         return this;
     }
 
-    public GIDMoniker addGIDMonikerSet(GIDMonikerSet gIDMonikerSet) {
-        this.gIDMonikerSets.add(gIDMonikerSet);
-        gIDMonikerSet.getGIDMonikers().add(this);
+    public GIDMoniker addSet(GIDMonikerSet gIDMonikerSet) {
+        this.sets.add(gIDMonikerSet);
+        gIDMonikerSet.getMonikers().add(this);
         return this;
     }
 
-    public GIDMoniker removeGIDMonikerSet(GIDMonikerSet gIDMonikerSet) {
-        this.gIDMonikerSets.remove(gIDMonikerSet);
-        gIDMonikerSet.getGIDMonikers().remove(this);
+    public GIDMoniker removeSet(GIDMonikerSet gIDMonikerSet) {
+        this.sets.remove(gIDMonikerSet);
+        gIDMonikerSet.getMonikers().remove(this);
         return this;
     }
 
-    public void setGIDMonikerSets(Set<GIDMonikerSet> gIDMonikerSets) {
-        this.gIDMonikerSets = gIDMonikerSets;
+    public void setSets(Set<GIDMonikerSet> gIDMonikerSets) {
+        this.sets = gIDMonikerSets;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

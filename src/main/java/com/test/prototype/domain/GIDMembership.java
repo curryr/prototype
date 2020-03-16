@@ -37,7 +37,7 @@ public class GIDMembership implements Serializable {
     private GIDMonikerSet monickers;
 
     @ManyToOne
-    @JsonIgnoreProperties("gIDMemberships")
+    @JsonIgnoreProperties("memberships")
     private GIDIdentity identity;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

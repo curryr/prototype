@@ -5,9 +5,9 @@ export interface IGIDMoniker {
   id?: number;
   moniker?: string;
   prefix?: GIDMonikerPrefix;
-  gIDMonikerSets?: IGIDMonikerSet[];
+  sets?: IGIDMonikerSet[];
 }
 
 export class GIDMoniker implements IGIDMoniker {
-  constructor(public id?: number, public moniker?: string, public prefix?: GIDMonikerPrefix, public gIDMonikerSets?: IGIDMonikerSet[]) {}
+  constructor(public id?: number, public moniker?: string, public prefix?: GIDMonikerPrefix, public sets?: IGIDMonikerSet[]) {}
 }

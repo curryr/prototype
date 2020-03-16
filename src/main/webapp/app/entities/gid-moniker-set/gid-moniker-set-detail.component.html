@@ -8,10 +8,10 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span>G ID Moniker</span></dt>
+                <dt><span>Monikers</span></dt>
                 <dd>
-                    <span *ngFor="let gIDMoniker of gIDMonikerSet.gIDMonikers; let last = last">
-                        <a [routerLink]="['/gid-moniker', gIDMoniker?.id, 'view']">{{ gIDMoniker.id }}</a>{{ last ? '' : ', ' }}
+                    <span *ngFor="let monikers of gIDMonikerSet.monikers; let last = last">
+                        <a [routerLink]="['/gid-moniker', monikers?.id, 'view']">{{ monikers.id }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
             </dl>

@@ -41,10 +41,10 @@ public class GIDIdentity implements Serializable {
     private GIDMonikerSet standardMonikerSet;
 
     @OneToMany(mappedBy = "identity")
-    private Set<GIDMembership> gIDMemberships = new HashSet<>();
+    private Set<GIDMembership> memberships = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("gIDIdentities")
+    @JsonIgnoreProperties("identities")
     private GIDUser user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -121,29 +121,29 @@ public class GIDIdentity implements Serializable {
         this.standardMonikerSet = gIDMonikerSet;
     }
 
-    public Set<GIDMembership> getGIDMemberships() {
-        return gIDMemberships;
+    public Set<GIDMembership> getMemberships() {
+        return memberships;
     }
 
-    public GIDIdentity gIDMemberships(Set<GIDMembership> gIDMemberships) {
-        this.gIDMemberships = gIDMemberships;
+    public GIDIdentity memberships(Set<GIDMembership> gIDMemberships) {
+        this.memberships = gIDMemberships;
         return this;
     }
 
-    public GIDIdentity addGIDMembership(GIDMembership gIDMembership) {
-        this.gIDMemberships.add(gIDMembership);
+    public GIDIdentity addMemberships(GIDMembership gIDMembership) {
+        this.memberships.add(gIDMembership);
         gIDMembership.setIdentity(this);
         return this;
     }
 
-    public GIDIdentity removeGIDMembership(GIDMembership gIDMembership) {
-        this.gIDMemberships.remove(gIDMembership);
+    public GIDIdentity removeMemberships(GIDMembership gIDMembership) {
+        this.memberships.remove(gIDMembership);
         gIDMembership.setIdentity(null);
         return this;
     }
 
-    public void setGIDMemberships(Set<GIDMembership> gIDMemberships) {
-        this.gIDMemberships = gIDMemberships;
+    public void setMemberships(Set<GIDMembership> gIDMemberships) {
+        this.memberships = gIDMemberships;
     }
 
     public GIDUser getUser() {

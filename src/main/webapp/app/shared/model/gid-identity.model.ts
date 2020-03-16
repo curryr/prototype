@@ -9,7 +9,7 @@ export interface IGIDIdentity {
   monickers?: IGIDMonikerSet;
   fullMonikerSet?: IGIDMonikerSet;
   standardMonikerSet?: IGIDMonikerSet;
-  gIDMemberships?: IGIDMembership[];
+  memberships?: IGIDMembership[];
   user?: IGIDUser;
 }
 
@@ -21,7 +21,7 @@ export class GIDIdentity implements IGIDIdentity {
     public monickers?: IGIDMonikerSet,
     public fullMonikerSet?: IGIDMonikerSet,
     public standardMonikerSet?: IGIDMonikerSet,
-    public gIDMemberships?: IGIDMembership[],
+    public memberships?: IGIDMembership[],
     public user?: IGIDUser
   ) {}
 }

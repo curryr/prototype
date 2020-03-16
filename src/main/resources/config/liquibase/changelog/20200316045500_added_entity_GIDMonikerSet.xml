@@ -22,8 +22,8 @@
 
     <changeSet id="20200316045500-1-relations" author="jhipster">
 
-        <createTable tableName="gid_moniker_set_gidmoniker">
-            <column name="gidmoniker_id" type="bigint">
+        <createTable tableName="gid_moniker_set_monikers">
+            <column name="monikers_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="gidmoniker_set_id" type="bigint">
@@ -31,7 +31,7 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="gidmoniker_set_id, gidmoniker_id" tableName="gid_moniker_set_gidmoniker"/>
+        <addPrimaryKey columnNames="gidmoniker_set_id, monikers_id" tableName="gid_moniker_set_monikers"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

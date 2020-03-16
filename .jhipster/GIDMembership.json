@@ -30,7 +30,7 @@
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "gIDIdentity",
-            "otherEntityRelationshipName": "gIDMembership",
+            "otherEntityRelationshipName": "memberships",
             "relationshipName": "identity",
             "otherEntityField": "id"
         }
