@@ -25,7 +25,6 @@
                     <th scope="col" ><span>ID</span></th>
                     <th scope="col" ><span>Model</span></th>
                     <th scope="col" ><span>Year</span></th>
-                    <th scope="col" ><span>Owned By</span></th>
                     <th scope="col" ><span>Owner</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -35,11 +34,6 @@
                     <td><a [routerLink]="['/car', car.id, 'view']">{{ car.id }}</a></td>
                     <td>{{ car.model }}</td>
                     <td>{{ car.year }}</td>
-                    <td>
-                        <div *ngIf="car.ownedBy">
-                            <a [routerLink]="['/owner', car.ownedBy?.id, 'view']" >{{ car.ownedBy?.id }}</a>
-                        </div>
-                    </td>
                     <td>
                         <div *ngIf="car.owner">
                             <a [routerLink]="['/owner', car.owner?.id, 'view']" >{{ car.owner?.id }}</a>

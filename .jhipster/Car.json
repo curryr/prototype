@@ -15,13 +15,6 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "owner",
             "otherEntityRelationshipName": "car",
-            "relationshipName": "ownedBy",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "owner",
-            "otherEntityRelationshipName": "car",
             "relationshipName": "owner",
             "otherEntityField": "id"
         }

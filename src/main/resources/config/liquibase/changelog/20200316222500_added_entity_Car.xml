@@ -22,9 +22,6 @@
             <column name="year" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="owned_by_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <column name="owner_id" type="bigint">
                 <constraints nullable="true" />
             </column>
