@@ -9,8 +9,3 @@ entity Car {
 relationship OneToMany {
   Owner{car} to Car{owner}
 }
-
-relationship ManyToOne {
-  Car{ownedBy} to Owner
-}
-

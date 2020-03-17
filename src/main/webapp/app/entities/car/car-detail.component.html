@@ -16,12 +16,6 @@
                 <dd>
                     <span>{{ car.year }}</span>
                 </dd>
-                <dt><span>Owned By</span></dt>
-                <dd>
-                    <div *ngIf="car.ownedBy">
-                        <a [routerLink]="['/owner', car.ownedBy?.id, 'view']">{{ car.ownedBy?.id }}</a>
-                    </div>
-                </dd>
                 <dt><span>Owner</span></dt>
                 <dd>
                     <div *ngIf="car.owner">
