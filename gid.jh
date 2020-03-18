@@ -1,6 +1,3 @@
-entity Car
-entity Owner
-
 relationship OneToMany {
   Owner{car} to Car{owner}
 }
