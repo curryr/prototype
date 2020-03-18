@@ -1,0 +1,67 @@
+relationship OneToMany {
+  Owner{car} to Car{owner}
+}
+
+relationship ManyToOne {
+  Car{ownedBy} to Owner
+}
+
+entity GIDUser {
+	firstName String,
+	lastName String,
+}
+
+entity GIDIdentity {
+	gid String,
+	pgid String,
+}
+
+entity GIDMembership {
+	ogid String,
+	tenantKey String,
+	tenantUserKey String,
+    tenantUserBlock String,
+}
+
+entity GIDMoniker {
+	moniker String,
+	prefix String,
+    prefix GIDMonikerPrefix
+}
+
+enum GIDMonikerPrefix {
+    LEGACY, TEL, MAILTO
+}
+
+entity GIDMonikerSet {
+}
+
+relationship OneToOne {
+    GIDUser{monikers} to GIDMonikerSet
+
+	GIDIdentity{monikers} to GIDMonikerSet
+    GIDIdentity{fullMonikerSet} to GIDMonikerSet
+    GIDIdentity{standardMonikerSet} to GIDMonikerSet
+
+	GIDMembership{monikers} to GIDMonikerSet
+}
+
+relationship OneToMany {
+	GIDUser{identities(pgid)} to GIDIdentity{user(firstName)},
+	GIDIdentity{memberships(tenantKey)} to GIDMembership{identity(pgid)}
+}
+
+relationship ManyToMany {
+	GIDMonikerSet{monikers(moniker)} to GIDMoniker{set}
+}
+// Set pagination options
+paginate GIDUser, GIDIdentity, GIDMembership, GIDMoniker with infinite-scroll
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
