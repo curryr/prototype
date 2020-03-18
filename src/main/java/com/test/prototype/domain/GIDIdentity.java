@@ -30,7 +30,7 @@ public class GIDIdentity implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private GIDMonikerSet monickers;
+    private GIDMonikerSet monikers;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -82,17 +82,17 @@ public class GIDIdentity implements Serializable {
         this.pgid = pgid;
     }
 
-    public GIDMonikerSet getMonickers() {
-        return monickers;
+    public GIDMonikerSet getMonikers() {
+        return monikers;
     }
 
-    public GIDIdentity monickers(GIDMonikerSet gIDMonikerSet) {
-        this.monickers = gIDMonikerSet;
+    public GIDIdentity monikers(GIDMonikerSet gIDMonikerSet) {
+        this.monikers = gIDMonikerSet;
         return this;
     }
 
-    public void setMonickers(GIDMonikerSet gIDMonikerSet) {
-        this.monickers = gIDMonikerSet;
+    public void setMonikers(GIDMonikerSet gIDMonikerSet) {
+        this.monikers = gIDMonikerSet;
     }
 
     public GIDMonikerSet getFullMonikerSet() {

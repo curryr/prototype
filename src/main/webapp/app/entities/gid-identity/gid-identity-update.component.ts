@@ -21,7 +21,7 @@ type SelectableEntity = IGIDMonikerSet | IGIDUser;
 })
 export class GIDIdentityUpdateComponent implements OnInit {
   isSaving = false;
-  monickers: IGIDMonikerSet[] = [];
+  monikers: IGIDMonikerSet[] = [];
   fullmonikersets: IGIDMonikerSet[] = [];
   standardmonikersets: IGIDMonikerSet[] = [];
   gidusers: IGIDUser[] = [];
@@ -30,7 +30,7 @@ export class GIDIdentityUpdateComponent implements OnInit {
     id: [],
     gid: [],
     pgid: [],
-    monickers: [],
+    monikers: [],
     fullMonikerSet: [],
     standardMonikerSet: [],
     user: []
@@ -56,17 +56,17 @@ export class GIDIdentityUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IGIDMonikerSet[]) => {
-          if (!gIDIdentity.monickers || !gIDIdentity.monickers.id) {
-            this.monickers = resBody;
+          if (!gIDIdentity.monikers || !gIDIdentity.monikers.id) {
+            this.monikers = resBody;
           } else {
             this.gIDMonikerSetService
-              .find(gIDIdentity.monickers.id)
+              .find(gIDIdentity.monikers.id)
               .pipe(
                 map((subRes: HttpResponse<IGIDMonikerSet>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
                 })
               )
-              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monickers = concatRes));
+              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monikers = concatRes));
           }
         });
 
@@ -123,7 +123,7 @@ export class GIDIdentityUpdateComponent implements OnInit {
       id: gIDIdentity.id,
       gid: gIDIdentity.gid,
       pgid: gIDIdentity.pgid,
-      monickers: gIDIdentity.monickers,
+      monikers: gIDIdentity.monikers,
       fullMonikerSet: gIDIdentity.fullMonikerSet,
       standardMonikerSet: gIDIdentity.standardMonikerSet,
       user: gIDIdentity.user
@@ -150,7 +150,7 @@ export class GIDIdentityUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       gid: this.editForm.get(['gid'])!.value,
       pgid: this.editForm.get(['pgid'])!.value,
-      monickers: this.editForm.get(['monickers'])!.value,
+      monikers: this.editForm.get(['monikers'])!.value,
       fullMonikerSet: this.editForm.get(['fullMonikerSet'])!.value,
       standardMonikerSet: this.editForm.get(['standardMonikerSet'])!.value,
       user: this.editForm.get(['user'])!.value

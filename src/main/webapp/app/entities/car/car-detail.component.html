@@ -8,13 +8,11 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span>Model</span></dt>
+                <dt><span>Owned By</span></dt>
                 <dd>
-                    <span>{{ car.model }}</span>
-                </dd>
-                <dt><span>Year</span></dt>
-                <dd>
-                    <span>{{ car.year }}</span>
+                    <div *ngIf="car.ownedBy">
+                        <a [routerLink]="['/owner', car.ownedBy?.id, 'view']">{{ car.ownedBy?.id }}</a>
+                    </div>
                 </dd>
                 <dt><span>Owner</span></dt>
                 <dd>

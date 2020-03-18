@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(OwnerService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Owner(0, 'AAAAAAA');
+      elemDefault = new Owner(0);
     });
 
     describe('Service methods', () => {
@@ -52,12 +52,7 @@ describe('Service Tests', () => {
       });
 
       it('should update a Owner', () => {
-        const returnedFromService = Object.assign(
-          {
-            name: 'BBBBBB'
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -69,12 +64,7 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of Owner', () => {
-        const returnedFromService = Object.assign(
-          {
-            name: 'BBBBBB'
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 

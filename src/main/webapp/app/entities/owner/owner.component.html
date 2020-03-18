@@ -23,14 +23,12 @@
             <thead>
                 <tr>
                     <th scope="col" ><span>ID</span></th>
-                    <th scope="col" ><span>Name</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let owner of owners ;trackBy: trackId">
                     <td><a [routerLink]="['/owner', owner.id, 'view']">{{ owner.id }}</a></td>
-                    <td>{{ owner.name }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

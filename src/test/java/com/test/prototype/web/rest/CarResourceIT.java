@@ -31,12 +31,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class CarResourceIT {
 
-    private static final String DEFAULT_MODEL = "AAAAAAAAAA";
-    private static final String UPDATED_MODEL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_YEAR = "AAAAAAAAAA";
-    private static final String UPDATED_YEAR = "BBBBBBBBBB";
-
     @Autowired
     private CarRepository carRepository;
 
@@ -55,9 +49,7 @@ public class CarResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Car createEntity(EntityManager em) {
-        Car car = new Car()
-            .model(DEFAULT_MODEL)
-            .year(DEFAULT_YEAR);
+        Car car = new Car();
         return car;
     }
     /**
@@ -67,9 +59,7 @@ public class CarResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Car createUpdatedEntity(EntityManager em) {
-        Car car = new Car()
-            .model(UPDATED_MODEL)
-            .year(UPDATED_YEAR);
+        Car car = new Car();
         return car;
     }
 
@@ -93,8 +83,6 @@ public class CarResourceIT {
         List<Car> carList = carRepository.findAll();
         assertThat(carList).hasSize(databaseSizeBeforeCreate + 1);
         Car testCar = carList.get(carList.size() - 1);
-        assertThat(testCar.getModel()).isEqualTo(DEFAULT_MODEL);
-        assertThat(testCar.getYear()).isEqualTo(DEFAULT_YEAR);
     }
 
     @Test
@@ -127,9 +115,7 @@ public class CarResourceIT {
         restCarMockMvc.perform(get("/api/cars?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(car.getId().intValue())))
-            .andExpect(jsonPath("$.[*].model").value(hasItem(DEFAULT_MODEL)))
-            .andExpect(jsonPath("$.[*].year").value(hasItem(DEFAULT_YEAR)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(car.getId().intValue())));
     }
     
     @Test
@@ -142,9 +128,7 @@ public class CarResourceIT {
         restCarMockMvc.perform(get("/api/cars/{id}", car.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(car.getId().intValue()))
-            .andExpect(jsonPath("$.model").value(DEFAULT_MODEL))
-            .andExpect(jsonPath("$.year").value(DEFAULT_YEAR));
+            .andExpect(jsonPath("$.id").value(car.getId().intValue()));
     }
 
     @Test
@@ -167,9 +151,6 @@ public class CarResourceIT {
         Car updatedCar = carRepository.findById(car.getId()).get();
         // Disconnect from session so that the updates on updatedCar are not directly saved in db
         em.detach(updatedCar);
-        updatedCar
-            .model(UPDATED_MODEL)
-            .year(UPDATED_YEAR);
 
         restCarMockMvc.perform(put("/api/cars").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -180,8 +161,6 @@ public class CarResourceIT {
         List<Car> carList = carRepository.findAll();
         assertThat(carList).hasSize(databaseSizeBeforeUpdate);
         Car testCar = carList.get(carList.size() - 1);
-        assertThat(testCar.getModel()).isEqualTo(UPDATED_MODEL);
-        assertThat(testCar.getYear()).isEqualTo(UPDATED_YEAR);
     }
 
     @Test

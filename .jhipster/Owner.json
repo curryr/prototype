@@ -1,11 +1,6 @@
 {
     "name": "Owner",
-    "fields": [
-        {
-            "fieldName": "name",
-            "fieldType": "String"
-        }
-    ],
+    "fields": [],
     "relationships": [
         {
             "relationshipType": "one-to-many",

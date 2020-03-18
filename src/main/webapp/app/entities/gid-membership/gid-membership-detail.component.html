@@ -24,10 +24,10 @@
                 <dd>
                     <span>{{ gIDMembership.tenantUserBlock }}</span>
                 </dd>
-                <dt><span>Monickers</span></dt>
+                <dt><span>Monikers</span></dt>
                 <dd>
-                    <div *ngIf="gIDMembership.monickers">
-                        <a [routerLink]="['/gid-moniker-set', gIDMembership.monickers?.id, 'view']">{{ gIDMembership.monickers?.id }}</a>
+                    <div *ngIf="gIDMembership.monikers">
+                        <a [routerLink]="['/gid-moniker-set', gIDMembership.monikers?.id, 'view']">{{ gIDMembership.monikers?.id }}</a>
                     </div>
                 </dd>
                 <dt><span>Identity</span></dt>

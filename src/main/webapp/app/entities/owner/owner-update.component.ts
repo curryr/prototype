@@ -16,8 +16,7 @@ export class OwnerUpdateComponent implements OnInit {
   isSaving = false;
 
   editForm = this.fb.group({
-    id: [],
-    name: []
+    id: []
   });
 
   constructor(protected ownerService: OwnerService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,8 +29,7 @@ export class OwnerUpdateComponent implements OnInit {
 
   updateForm(owner: IOwner): void {
     this.editForm.patchValue({
-      id: owner.id,
-      name: owner.name
+      id: owner.id
     });
   }
 
@@ -52,8 +50,7 @@ export class OwnerUpdateComponent implements OnInit {
   private createFromForm(): IOwner {
     return {
       ...new Owner(),
-      id: this.editForm.get(['id'])!.value,
-      name: this.editForm.get(['name'])!.value
+      id: this.editForm.get(['id'])!.value
     };
   }
 

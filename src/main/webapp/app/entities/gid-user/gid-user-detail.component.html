@@ -16,10 +16,10 @@
                 <dd>
                     <span>{{ gIDUser.lastName }}</span>
                 </dd>
-                <dt><span>Monickers</span></dt>
+                <dt><span>Monikers</span></dt>
                 <dd>
-                    <div *ngIf="gIDUser.monickers">
-                        <a [routerLink]="['/gid-moniker-set', gIDUser.monickers?.id, 'view']">{{ gIDUser.monickers?.id }}</a>
+                    <div *ngIf="gIDUser.monikers">
+                        <a [routerLink]="['/gid-moniker-set', gIDUser.monikers?.id, 'view']">{{ gIDUser.monikers?.id }}</a>
                     </div>
                 </dd>
             </dl>
