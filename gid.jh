@@ -1,11 +1,3 @@
-relationship OneToMany {
-  Owner{car} to Car{owner}
-}
-
-relationship ManyToOne {
-  Car{ownedBy} to Owner
-}
-
 entity GIDUser {
 	firstName String,
 	lastName String,
