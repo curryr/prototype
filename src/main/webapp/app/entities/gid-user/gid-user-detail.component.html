@@ -22,6 +22,12 @@
                         <a [routerLink]="['/gid-moniker-set', gIDUser.monikers?.id, 'view']">{{ gIDUser.monikers?.id }}</a>
                     </div>
                 </dd>
+                <dt><span>Identities</span></dt>
+                <dd>
+                    <span *ngFor="let identities of gIDUser.identities; let last = last">
+                        <a [routerLink]="['/gid-identity', identities?.id, 'view']">{{ identities.pgid }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

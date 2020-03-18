@@ -26,11 +26,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="gid_moniker_set"/>
 
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="gid_identity"
-                                 constraintName="fk_gid_identity_user_id"
+        <addForeignKeyConstraint baseColumnNames="gididentity_id"
+                                 baseTableName="gid_identity_memberships"
+                                 constraintName="fk_gid_identity_memberships_gid_identity_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="gid_user"/>
+                                 referencedTableName="gid_identity"/>
 
+        <addForeignKeyConstraint baseColumnNames="memberships_id"
+                                 baseTableName="gid_identity_memberships"
+                                 constraintName="fk_gid_identity_memberships_memberships_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gid_membership"/>
+        
     </changeSet>
 </databaseChangeLog>

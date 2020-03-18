@@ -31,7 +31,10 @@ public class GIDUser implements Serializable {
     @JoinColumn(unique = true)
     private GIDMonikerSet monikers;
 
-    @OneToMany(mappedBy = "user")
+    @ManyToMany
+    @JoinTable(name = "gid_user_identities",
+               joinColumns = @JoinColumn(name = "giduser_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "identities_id", referencedColumnName = "id"))
     private Set<GIDIdentity> identities = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -93,13 +96,13 @@ public class GIDUser implements Serializable {
 
     public GIDUser addIdentities(GIDIdentity gIDIdentity) {
         this.identities.add(gIDIdentity);
-        gIDIdentity.setUser(this);
+        gIDIdentity.getUsers().add(this);
         return this;
     }
 
     public GIDUser removeIdentities(GIDIdentity gIDIdentity) {
         this.identities.remove(gIDIdentity);
-        gIDIdentity.setUser(null);
+        gIDIdentity.getUsers().remove(this);
         return this;
     }
 

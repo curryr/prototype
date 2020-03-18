@@ -14,5 +14,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="gid_moniker_set"/>
 
+        <addForeignKeyConstraint baseColumnNames="giduser_id"
+                                 baseTableName="gid_user_identities"
+                                 constraintName="fk_gid_user_identities_gid_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gid_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="identities_id"
+                                 baseTableName="gid_user_identities"
+                                 constraintName="fk_gid_user_identities_identities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gid_identity"/>
+        
     </changeSet>
 </databaseChangeLog>

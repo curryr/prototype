@@ -38,7 +38,7 @@ relationship OneToOne {
 	GIDMembership{monikers} to GIDMonikerSet
 }
 
-relationship OneToMany {
+relationship ManyToMany {
 	GIDUser{identities(pgid)} to GIDIdentity{user(firstName)},
 	GIDIdentity{memberships(tenantKey)} to GIDMembership{identity(pgid)}
 }

@@ -10,10 +10,6 @@ import { IGIDMembership, GIDMembership } from 'app/shared/model/gid-membership.m
 import { GIDMembershipService } from './gid-membership.service';
 import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
 import { GIDMonikerSetService } from 'app/entities/gid-moniker-set/gid-moniker-set.service';
-import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
-import { GIDIdentityService } from 'app/entities/gid-identity/gid-identity.service';
-
-type SelectableEntity = IGIDMonikerSet | IGIDIdentity;
 
 @Component({
   selector: 'jhi-gid-membership-update',
@@ -22,7 +18,6 @@ type SelectableEntity = IGIDMonikerSet | IGIDIdentity;
 export class GIDMembershipUpdateComponent implements OnInit {
   isSaving = false;
   monikers: IGIDMonikerSet[] = [];
-  gididentities: IGIDIdentity[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -30,14 +25,12 @@ export class GIDMembershipUpdateComponent implements OnInit {
     tenantKey: [],
     tenantUserKey: [],
     tenantUserBlock: [],
-    monikers: [],
-    identity: []
+    monikers: []
   });
 
   constructor(
     protected gIDMembershipService: GIDMembershipService,
     protected gIDMonikerSetService: GIDMonikerSetService,
-    protected gIDIdentityService: GIDIdentityService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -67,8 +60,6 @@ export class GIDMembershipUpdateComponent implements OnInit {
               .subscribe((concatRes: IGIDMonikerSet[]) => (this.monikers = concatRes));
           }
         });
-
-      this.gIDIdentityService.query().subscribe((res: HttpResponse<IGIDIdentity[]>) => (this.gididentities = res.body || []));
     });
   }
 
@@ -79,8 +70,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
       tenantKey: gIDMembership.tenantKey,
       tenantUserKey: gIDMembership.tenantUserKey,
       tenantUserBlock: gIDMembership.tenantUserBlock,
-      monikers: gIDMembership.monikers,
-      identity: gIDMembership.identity
+      monikers: gIDMembership.monikers
     });
   }
 
@@ -106,8 +96,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
       tenantKey: this.editForm.get(['tenantKey'])!.value,
       tenantUserKey: this.editForm.get(['tenantUserKey'])!.value,
       tenantUserBlock: this.editForm.get(['tenantUserBlock'])!.value,
-      monikers: this.editForm.get(['monikers'])!.value,
-      identity: this.editForm.get(['identity'])!.value
+      monikers: this.editForm.get(['monikers'])!.value
     };
   }
 
@@ -127,7 +116,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: SelectableEntity): any {
+  trackById(index: number, item: IGIDMonikerSet): any {
     return item.id;
   }
 }

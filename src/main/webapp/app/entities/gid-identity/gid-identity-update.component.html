@@ -48,10 +48,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" formControlName="user">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gIDUserOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : gIDUserOption" *ngFor="let gIDUserOption of gidusers; trackBy: trackById">{{ gIDUserOption.firstName }}</option>
+                    <label for="field_memberships">Memberships</label>
+                    <select class="form-control" id="field_memberships" multiple name="memberships" formControlName="memberships">
+                        <option [ngValue]="getSelected(editForm.get('memberships')!.value, gIDMembershipOption)" *ngFor="let gIDMembershipOption of gidmemberships; trackBy: trackById">{{ gIDMembershipOption.tenantKey }}</option>
                     </select>
                 </div>
             </div>

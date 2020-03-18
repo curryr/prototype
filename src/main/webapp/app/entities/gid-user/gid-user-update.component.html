@@ -30,6 +30,13 @@
                         <option [ngValue]="gIDMonikerSetOption.id === editForm.get('monikers')!.value?.id ? editForm.get('monikers')!.value : gIDMonikerSetOption" *ngFor="let gIDMonikerSetOption of monikers; trackBy: trackById">{{ gIDMonikerSetOption.id }}</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="field_identities">Identities</label>
+                    <select class="form-control" id="field_identities" multiple name="identities" formControlName="identities">
+                        <option [ngValue]="getSelected(editForm.get('identities')!.value, gIDIdentityOption)" *ngFor="let gIDIdentityOption of gididentities; trackBy: trackById">{{ gIDIdentityOption.pgid }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

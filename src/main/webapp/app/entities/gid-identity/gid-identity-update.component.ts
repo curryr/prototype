@@ -10,10 +10,10 @@ import { IGIDIdentity, GIDIdentity } from 'app/shared/model/gid-identity.model';
 import { GIDIdentityService } from './gid-identity.service';
 import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
 import { GIDMonikerSetService } from 'app/entities/gid-moniker-set/gid-moniker-set.service';
-import { IGIDUser } from 'app/shared/model/gid-user.model';
-import { GIDUserService } from 'app/entities/gid-user/gid-user.service';
+import { IGIDMembership } from 'app/shared/model/gid-membership.model';
+import { GIDMembershipService } from 'app/entities/gid-membership/gid-membership.service';
 
-type SelectableEntity = IGIDMonikerSet | IGIDUser;
+type SelectableEntity = IGIDMonikerSet | IGIDMembership;
 
 @Component({
   selector: 'jhi-gid-identity-update',
@@ -24,7 +24,7 @@ export class GIDIdentityUpdateComponent implements OnInit {
   monikers: IGIDMonikerSet[] = [];
   fullmonikersets: IGIDMonikerSet[] = [];
   standardmonikersets: IGIDMonikerSet[] = [];
-  gidusers: IGIDUser[] = [];
+  gidmemberships: IGIDMembership[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -33,13 +33,13 @@ export class GIDIdentityUpdateComponent implements OnInit {
     monikers: [],
     fullMonikerSet: [],
     standardMonikerSet: [],
-    user: []
+    memberships: []
   });
 
   constructor(
     protected gIDIdentityService: GIDIdentityService,
     protected gIDMonikerSetService: GIDMonikerSetService,
-    protected gIDUserService: GIDUserService,
+    protected gIDMembershipService: GIDMembershipService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -114,7 +114,7 @@ export class GIDIdentityUpdateComponent implements OnInit {
           }
         });
 
-      this.gIDUserService.query().subscribe((res: HttpResponse<IGIDUser[]>) => (this.gidusers = res.body || []));
+      this.gIDMembershipService.query().subscribe((res: HttpResponse<IGIDMembership[]>) => (this.gidmemberships = res.body || []));
     });
   }
 
@@ -126,7 +126,7 @@ export class GIDIdentityUpdateComponent implements OnInit {
       monikers: gIDIdentity.monikers,
       fullMonikerSet: gIDIdentity.fullMonikerSet,
       standardMonikerSet: gIDIdentity.standardMonikerSet,
-      user: gIDIdentity.user
+      memberships: gIDIdentity.memberships
     });
   }
 
@@ -153,7 +153,7 @@ export class GIDIdentityUpdateComponent implements OnInit {
       monikers: this.editForm.get(['monikers'])!.value,
       fullMonikerSet: this.editForm.get(['fullMonikerSet'])!.value,
       standardMonikerSet: this.editForm.get(['standardMonikerSet'])!.value,
-      user: this.editForm.get(['user'])!.value
+      memberships: this.editForm.get(['memberships'])!.value
     };
   }
 
@@ -175,5 +175,16 @@ export class GIDIdentityUpdateComponent implements OnInit {
 
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
+  }
+
+  getSelected(selectedVals: IGIDMembership[], option: IGIDMembership): IGIDMembership {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

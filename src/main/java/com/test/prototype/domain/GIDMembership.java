@@ -1,11 +1,13 @@
 package com.test.prototype.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A GIDMembership.
@@ -36,9 +38,9 @@ public class GIDMembership implements Serializable {
     @JoinColumn(unique = true)
     private GIDMonikerSet monikers;
 
-    @ManyToOne
-    @JsonIgnoreProperties("memberships")
-    private GIDIdentity identity;
+    @ManyToMany(mappedBy = "memberships")
+    @JsonIgnore
+    private Set<GIDIdentity> identities = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -114,17 +116,29 @@ public class GIDMembership implements Serializable {
         this.monikers = gIDMonikerSet;
     }
 
-    public GIDIdentity getIdentity() {
-        return identity;
+    public Set<GIDIdentity> getIdentities() {
+        return identities;
     }
 
-    public GIDMembership identity(GIDIdentity gIDIdentity) {
-        this.identity = gIDIdentity;
+    public GIDMembership identities(Set<GIDIdentity> gIDIdentities) {
+        this.identities = gIDIdentities;
         return this;
     }
 
-    public void setIdentity(GIDIdentity gIDIdentity) {
-        this.identity = gIDIdentity;
+    public GIDMembership addIdentity(GIDIdentity gIDIdentity) {
+        this.identities.add(gIDIdentity);
+        gIDIdentity.getMemberships().add(this);
+        return this;
+    }
+
+    public GIDMembership removeIdentity(GIDIdentity gIDIdentity) {
+        this.identities.remove(gIDIdentity);
+        gIDIdentity.getMemberships().remove(this);
+        return this;
+    }
+
+    public void setIdentities(Set<GIDIdentity> gIDIdentities) {
+        this.identities = gIDIdentities;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
