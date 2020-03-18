@@ -22,8 +22,8 @@
             <column name="pgid" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="monickers_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_gid_identity_monickers_id" />
+            <column name="monikers_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_gid_identity_monikers_id" />
             </column>
             <column name="full_moniker_set_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_gid_identity_full_moniker_set_id" />

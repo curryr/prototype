@@ -5,7 +5,7 @@ export interface IGIDUser {
   id?: number;
   firstName?: string;
   lastName?: string;
-  monickers?: IGIDMonikerSet;
+  monikers?: IGIDMonikerSet;
   identities?: IGIDIdentity[];
 }
 
@@ -14,7 +14,7 @@ export class GIDUser implements IGIDUser {
     public id?: number,
     public firstName?: string,
     public lastName?: string,
-    public monickers?: IGIDMonikerSet,
+    public monikers?: IGIDMonikerSet,
     public identities?: IGIDIdentity[]
   ) {}
 }

@@ -21,7 +21,7 @@ type SelectableEntity = IGIDMonikerSet | IGIDIdentity;
 })
 export class GIDMembershipUpdateComponent implements OnInit {
   isSaving = false;
-  monickers: IGIDMonikerSet[] = [];
+  monikers: IGIDMonikerSet[] = [];
   gididentities: IGIDIdentity[] = [];
 
   editForm = this.fb.group({
@@ -30,7 +30,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
     tenantKey: [],
     tenantUserKey: [],
     tenantUserBlock: [],
-    monickers: [],
+    monikers: [],
     identity: []
   });
 
@@ -54,17 +54,17 @@ export class GIDMembershipUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IGIDMonikerSet[]) => {
-          if (!gIDMembership.monickers || !gIDMembership.monickers.id) {
-            this.monickers = resBody;
+          if (!gIDMembership.monikers || !gIDMembership.monikers.id) {
+            this.monikers = resBody;
           } else {
             this.gIDMonikerSetService
-              .find(gIDMembership.monickers.id)
+              .find(gIDMembership.monikers.id)
               .pipe(
                 map((subRes: HttpResponse<IGIDMonikerSet>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
                 })
               )
-              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monickers = concatRes));
+              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monikers = concatRes));
           }
         });
 
@@ -79,7 +79,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
       tenantKey: gIDMembership.tenantKey,
       tenantUserKey: gIDMembership.tenantUserKey,
       tenantUserBlock: gIDMembership.tenantUserBlock,
-      monickers: gIDMembership.monickers,
+      monikers: gIDMembership.monikers,
       identity: gIDMembership.identity
     });
   }
@@ -106,7 +106,7 @@ export class GIDMembershipUpdateComponent implements OnInit {
       tenantKey: this.editForm.get(['tenantKey'])!.value,
       tenantUserKey: this.editForm.get(['tenantUserKey'])!.value,
       tenantUserBlock: this.editForm.get(['tenantUserBlock'])!.value,
-      monickers: this.editForm.get(['monickers'])!.value,
+      monikers: this.editForm.get(['monikers'])!.value,
       identity: this.editForm.get(['identity'])!.value
     };
   }

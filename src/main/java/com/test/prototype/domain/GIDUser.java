@@ -29,7 +29,7 @@ public class GIDUser implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private GIDMonikerSet monickers;
+    private GIDMonikerSet monikers;
 
     @OneToMany(mappedBy = "user")
     private Set<GIDIdentity> identities = new HashSet<>();
@@ -69,17 +69,17 @@ public class GIDUser implements Serializable {
         this.lastName = lastName;
     }
 
-    public GIDMonikerSet getMonickers() {
-        return monickers;
+    public GIDMonikerSet getMonikers() {
+        return monikers;
     }
 
-    public GIDUser monickers(GIDMonikerSet gIDMonikerSet) {
-        this.monickers = gIDMonikerSet;
+    public GIDUser monikers(GIDMonikerSet gIDMonikerSet) {
+        this.monikers = gIDMonikerSet;
         return this;
     }
 
-    public void setMonickers(GIDMonikerSet gIDMonikerSet) {
-        this.monickers = gIDMonikerSet;
+    public void setMonikers(GIDMonikerSet gIDMonikerSet) {
+        this.monikers = gIDMonikerSet;
     }
 
     public Set<GIDIdentity> getIdentities() {

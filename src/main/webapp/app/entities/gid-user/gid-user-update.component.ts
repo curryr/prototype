@@ -17,13 +17,13 @@ import { GIDMonikerSetService } from 'app/entities/gid-moniker-set/gid-moniker-s
 })
 export class GIDUserUpdateComponent implements OnInit {
   isSaving = false;
-  monickers: IGIDMonikerSet[] = [];
+  monikers: IGIDMonikerSet[] = [];
 
   editForm = this.fb.group({
     id: [],
     firstName: [],
     lastName: [],
-    monickers: []
+    monikers: []
   });
 
   constructor(
@@ -45,17 +45,17 @@ export class GIDUserUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IGIDMonikerSet[]) => {
-          if (!gIDUser.monickers || !gIDUser.monickers.id) {
-            this.monickers = resBody;
+          if (!gIDUser.monikers || !gIDUser.monikers.id) {
+            this.monikers = resBody;
           } else {
             this.gIDMonikerSetService
-              .find(gIDUser.monickers.id)
+              .find(gIDUser.monikers.id)
               .pipe(
                 map((subRes: HttpResponse<IGIDMonikerSet>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
                 })
               )
-              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monickers = concatRes));
+              .subscribe((concatRes: IGIDMonikerSet[]) => (this.monikers = concatRes));
           }
         });
     });
@@ -66,7 +66,7 @@ export class GIDUserUpdateComponent implements OnInit {
       id: gIDUser.id,
       firstName: gIDUser.firstName,
       lastName: gIDUser.lastName,
-      monickers: gIDUser.monickers
+      monikers: gIDUser.monikers
     });
   }
 
@@ -90,7 +90,7 @@ export class GIDUserUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       firstName: this.editForm.get(['firstName'])!.value,
       lastName: this.editForm.get(['lastName'])!.value,
-      monickers: this.editForm.get(['monickers'])!.value
+      monikers: this.editForm.get(['monikers'])!.value
     };
   }
 

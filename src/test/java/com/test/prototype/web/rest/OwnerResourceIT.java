@@ -31,9 +31,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class OwnerResourceIT {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
-
     @Autowired
     private OwnerRepository ownerRepository;
 
@@ -52,8 +49,7 @@ public class OwnerResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Owner createEntity(EntityManager em) {
-        Owner owner = new Owner()
-            .name(DEFAULT_NAME);
+        Owner owner = new Owner();
         return owner;
     }
     /**
@@ -63,8 +59,7 @@ public class OwnerResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Owner createUpdatedEntity(EntityManager em) {
-        Owner owner = new Owner()
-            .name(UPDATED_NAME);
+        Owner owner = new Owner();
         return owner;
     }
 
@@ -88,7 +83,6 @@ public class OwnerResourceIT {
         List<Owner> ownerList = ownerRepository.findAll();
         assertThat(ownerList).hasSize(databaseSizeBeforeCreate + 1);
         Owner testOwner = ownerList.get(ownerList.size() - 1);
-        assertThat(testOwner.getName()).isEqualTo(DEFAULT_NAME);
     }
 
     @Test
@@ -121,8 +115,7 @@ public class OwnerResourceIT {
         restOwnerMockMvc.perform(get("/api/owners?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(owner.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(owner.getId().intValue())));
     }
     
     @Test
@@ -135,8 +128,7 @@ public class OwnerResourceIT {
         restOwnerMockMvc.perform(get("/api/owners/{id}", owner.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(owner.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
+            .andExpect(jsonPath("$.id").value(owner.getId().intValue()));
     }
 
     @Test
@@ -159,8 +151,6 @@ public class OwnerResourceIT {
         Owner updatedOwner = ownerRepository.findById(owner.getId()).get();
         // Disconnect from session so that the updates on updatedOwner are not directly saved in db
         em.detach(updatedOwner);
-        updatedOwner
-            .name(UPDATED_NAME);
 
         restOwnerMockMvc.perform(put("/api/owners").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -171,7 +161,6 @@ public class OwnerResourceIT {
         List<Owner> ownerList = ownerRepository.findAll();
         assertThat(ownerList).hasSize(databaseSizeBeforeUpdate);
         Owner testOwner = ownerList.get(ownerList.size() - 1);
-        assertThat(testOwner.getName()).isEqualTo(UPDATED_NAME);
     }
 
     @Test

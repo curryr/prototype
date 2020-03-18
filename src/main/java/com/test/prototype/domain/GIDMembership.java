@@ -34,7 +34,7 @@ public class GIDMembership implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private GIDMonikerSet monickers;
+    private GIDMonikerSet monikers;
 
     @ManyToOne
     @JsonIgnoreProperties("memberships")
@@ -101,17 +101,17 @@ public class GIDMembership implements Serializable {
         this.tenantUserBlock = tenantUserBlock;
     }
 
-    public GIDMonikerSet getMonickers() {
-        return monickers;
+    public GIDMonikerSet getMonikers() {
+        return monikers;
     }
 
-    public GIDMembership monickers(GIDMonikerSet gIDMonikerSet) {
-        this.monickers = gIDMonikerSet;
+    public GIDMembership monikers(GIDMonikerSet gIDMonikerSet) {
+        this.monikers = gIDMonikerSet;
         return this;
     }
 
-    public void setMonickers(GIDMonikerSet gIDMonikerSet) {
-        this.monickers = gIDMonikerSet;
+    public void setMonikers(GIDMonikerSet gIDMonikerSet) {
+        this.monikers = gIDMonikerSet;
     }
 
     public GIDIdentity getIdentity() {

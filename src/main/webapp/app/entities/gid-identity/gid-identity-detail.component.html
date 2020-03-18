@@ -16,10 +16,10 @@
                 <dd>
                     <span>{{ gIDIdentity.pgid }}</span>
                 </dd>
-                <dt><span>Monickers</span></dt>
+                <dt><span>Monikers</span></dt>
                 <dd>
-                    <div *ngIf="gIDIdentity.monickers">
-                        <a [routerLink]="['/gid-moniker-set', gIDIdentity.monickers?.id, 'view']">{{ gIDIdentity.monickers?.id }}</a>
+                    <div *ngIf="gIDIdentity.monikers">
+                        <a [routerLink]="['/gid-moniker-set', gIDIdentity.monikers?.id, 'view']">{{ gIDIdentity.monikers?.id }}</a>
                     </div>
                 </dd>
                 <dt><span>Full Moniker Set</span></dt>
