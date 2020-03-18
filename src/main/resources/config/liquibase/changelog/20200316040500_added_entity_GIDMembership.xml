@@ -28,8 +28,8 @@
             <column name="tenant_user_block" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="monickers_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_gid_membership_monickers_id" />
+            <column name="monikers_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_gid_membership_monikers_id" />
             </column>
             <column name="identity_id" type="bigint">
                 <constraints nullable="true" />

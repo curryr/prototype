@@ -20,11 +20,9 @@ public class Car implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "model")
-    private String model;
-
-    @Column(name = "year")
-    private String year;
+    @ManyToOne
+    @JsonIgnoreProperties("cars")
+    private Owner ownedBy;
 
     @ManyToOne
     @JsonIgnoreProperties("cars")
@@ -39,30 +37,17 @@ public class Car implements Serializable {
         this.id = id;
     }
 
-    public String getModel() {
-        return model;
+    public Owner getOwnedBy() {
+        return ownedBy;
     }
 
-    public Car model(String model) {
-        this.model = model;
+    public Car ownedBy(Owner owner) {
+        this.ownedBy = owner;
         return this;
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public Car year(String year) {
-        this.year = year;
-        return this;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
+    public void setOwnedBy(Owner owner) {
+        this.ownedBy = owner;
     }
 
     public Owner getOwner() {
@@ -99,8 +84,6 @@ public class Car implements Serializable {
     public String toString() {
         return "Car{" +
             "id=" + getId() +
-            ", model='" + getModel() + "'" +
-            ", year='" + getYear() + "'" +
             "}";
     }
 }

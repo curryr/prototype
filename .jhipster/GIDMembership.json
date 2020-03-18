@@ -23,7 +23,7 @@
             "relationshipType": "one-to-one",
             "otherEntityName": "gIDMonikerSet",
             "otherEntityRelationshipName": "gIDMembership",
-            "relationshipName": "monickers",
+            "relationshipName": "monikers",
             "otherEntityField": "id",
             "ownerSide": true
         },

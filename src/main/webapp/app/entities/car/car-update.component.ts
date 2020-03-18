@@ -20,8 +20,7 @@ export class CarUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    model: [],
-    year: [],
+    ownedBy: [],
     owner: []
   });
 
@@ -43,8 +42,7 @@ export class CarUpdateComponent implements OnInit {
   updateForm(car: ICar): void {
     this.editForm.patchValue({
       id: car.id,
-      model: car.model,
-      year: car.year,
+      ownedBy: car.ownedBy,
       owner: car.owner
     });
   }
@@ -67,8 +65,7 @@ export class CarUpdateComponent implements OnInit {
     return {
       ...new Car(),
       id: this.editForm.get(['id'])!.value,
-      model: this.editForm.get(['model'])!.value,
-      year: this.editForm.get(['year'])!.value,
+      ownedBy: this.editForm.get(['ownedBy'])!.value,
       owner: this.editForm.get(['owner'])!.value
     };
   }

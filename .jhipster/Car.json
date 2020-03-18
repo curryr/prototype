@@ -1,16 +1,14 @@
 {
     "name": "Car",
-    "fields": [
-        {
-            "fieldName": "model",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "year",
-            "fieldType": "String"
-        }
-    ],
+    "fields": [],
     "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "owner",
+            "otherEntityRelationshipName": "car",
+            "relationshipName": "ownedBy",
+            "otherEntityField": "id"
+        },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "owner",
