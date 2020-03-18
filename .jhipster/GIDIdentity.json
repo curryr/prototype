@@ -36,17 +36,20 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-many",
             "otherEntityName": "gIDMembership",
             "otherEntityRelationshipName": "identity",
-            "relationshipName": "memberships"
+            "relationshipName": "memberships",
+            "otherEntityField": "tenantKey",
+            "ownerSide": true
         },
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "many-to-many",
             "otherEntityName": "gIDUser",
             "otherEntityRelationshipName": "identities",
             "relationshipName": "user",
-            "otherEntityField": "firstName"
+            "otherEntityField": "firstName",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200316040400",

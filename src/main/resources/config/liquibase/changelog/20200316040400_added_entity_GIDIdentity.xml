@@ -31,15 +31,23 @@
             <column name="standard_moniker_set_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_gid_identity_standard_moniker_set_id" />
             </column>
-            <column name="user_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
 
     <changeSet id="20200316040400-1-relations" author="jhipster">
 
+        <createTable tableName="gid_identity_memberships">
+            <column name="memberships_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gididentity_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="gididentity_id, memberships_id" tableName="gid_identity_memberships"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 

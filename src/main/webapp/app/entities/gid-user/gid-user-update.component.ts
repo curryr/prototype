@@ -10,6 +10,10 @@ import { IGIDUser, GIDUser } from 'app/shared/model/gid-user.model';
 import { GIDUserService } from './gid-user.service';
 import { IGIDMonikerSet } from 'app/shared/model/gid-moniker-set.model';
 import { GIDMonikerSetService } from 'app/entities/gid-moniker-set/gid-moniker-set.service';
+import { IGIDIdentity } from 'app/shared/model/gid-identity.model';
+import { GIDIdentityService } from 'app/entities/gid-identity/gid-identity.service';
+
+type SelectableEntity = IGIDMonikerSet | IGIDIdentity;
 
 @Component({
   selector: 'jhi-gid-user-update',
@@ -18,17 +22,20 @@ import { GIDMonikerSetService } from 'app/entities/gid-moniker-set/gid-moniker-s
 export class GIDUserUpdateComponent implements OnInit {
   isSaving = false;
   monikers: IGIDMonikerSet[] = [];
+  gididentities: IGIDIdentity[] = [];
 
   editForm = this.fb.group({
     id: [],
     firstName: [],
     lastName: [],
-    monikers: []
+    monikers: [],
+    identities: []
   });
 
   constructor(
     protected gIDUserService: GIDUserService,
     protected gIDMonikerSetService: GIDMonikerSetService,
+    protected gIDIdentityService: GIDIdentityService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -58,6 +65,8 @@ export class GIDUserUpdateComponent implements OnInit {
               .subscribe((concatRes: IGIDMonikerSet[]) => (this.monikers = concatRes));
           }
         });
+
+      this.gIDIdentityService.query().subscribe((res: HttpResponse<IGIDIdentity[]>) => (this.gididentities = res.body || []));
     });
   }
 
@@ -66,7 +75,8 @@ export class GIDUserUpdateComponent implements OnInit {
       id: gIDUser.id,
       firstName: gIDUser.firstName,
       lastName: gIDUser.lastName,
-      monikers: gIDUser.monikers
+      monikers: gIDUser.monikers,
+      identities: gIDUser.identities
     });
   }
 
@@ -90,7 +100,8 @@ export class GIDUserUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       firstName: this.editForm.get(['firstName'])!.value,
       lastName: this.editForm.get(['lastName'])!.value,
-      monikers: this.editForm.get(['monikers'])!.value
+      monikers: this.editForm.get(['monikers'])!.value,
+      identities: this.editForm.get(['identities'])!.value
     };
   }
 
@@ -110,7 +121,18 @@ export class GIDUserUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IGIDMonikerSet): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
+  }
+
+  getSelected(selectedVals: IGIDIdentity[], option: IGIDIdentity): IGIDIdentity {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

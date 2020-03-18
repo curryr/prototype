@@ -28,7 +28,6 @@
                     <th scope="col"  jhiSortBy="tenantUserKey"><span>Tenant User Key</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tenantUserBlock"><span>Tenant User Block</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="monikers.id"><span>Monikers</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="identity.pgid"><span>Identity</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -42,11 +41,6 @@
                     <td>
                         <div *ngIf="gIDMembership.monikers">
                             <a [routerLink]="['/gid-moniker-set', gIDMembership.monikers?.id, 'view']" >{{ gIDMembership.monikers?.id }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="gIDMembership.identity">
-                            <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']" >{{ gIDMembership.identity?.pgid }}</a>
                         </div>
                     </td>
                     <td class="text-right">

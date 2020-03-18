@@ -20,10 +20,12 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-many",
             "otherEntityName": "gIDIdentity",
             "otherEntityRelationshipName": "user",
-            "relationshipName": "identities"
+            "relationshipName": "identities",
+            "otherEntityField": "pgid",
+            "ownerSide": true
         }
     ],
     "changelogDate": "20200316040300",

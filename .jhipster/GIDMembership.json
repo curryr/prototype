@@ -28,11 +28,12 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "many-to-many",
             "otherEntityName": "gIDIdentity",
             "otherEntityRelationshipName": "memberships",
             "relationshipName": "identity",
-            "otherEntityField": "pgid"
+            "otherEntityField": "pgid",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200316040500",

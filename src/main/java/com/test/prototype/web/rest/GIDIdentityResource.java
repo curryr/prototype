@@ -89,12 +89,18 @@ public class GIDIdentityResource {
      * {@code GET  /gid-identities} : get all the gIDIdentities.
      *
      * @param pageable the pagination information.
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of gIDIdentities in body.
      */
     @GetMapping("/gid-identities")
-    public ResponseEntity<List<GIDIdentity>> getAllGIDIdentities(Pageable pageable) {
+    public ResponseEntity<List<GIDIdentity>> getAllGIDIdentities(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of GIDIdentities");
-        Page<GIDIdentity> page = gIDIdentityRepository.findAll(pageable);
+        Page<GIDIdentity> page;
+        if (eagerload) {
+            page = gIDIdentityRepository.findAllWithEagerRelationships(pageable);
+        } else {
+            page = gIDIdentityRepository.findAll(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -108,7 +114,7 @@ public class GIDIdentityResource {
     @GetMapping("/gid-identities/{id}")
     public ResponseEntity<GIDIdentity> getGIDIdentity(@PathVariable Long id) {
         log.debug("REST request to get GIDIdentity : {}", id);
-        Optional<GIDIdentity> gIDIdentity = gIDIdentityRepository.findById(id);
+        Optional<GIDIdentity> gIDIdentity = gIDIdentityRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(gIDIdentity);
     }
 

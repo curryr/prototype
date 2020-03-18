@@ -30,12 +30,6 @@
                         <a [routerLink]="['/gid-moniker-set', gIDMembership.monikers?.id, 'view']">{{ gIDMembership.monikers?.id }}</a>
                     </div>
                 </dd>
-                <dt><span>Identity</span></dt>
-                <dd>
-                    <div *ngIf="gIDMembership.identity">
-                        <a [routerLink]="['/gid-identity', gIDMembership.identity?.id, 'view']">{{ gIDMembership.identity?.pgid }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

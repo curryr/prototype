@@ -8,7 +8,7 @@ export interface IGIDMembership {
   tenantUserKey?: string;
   tenantUserBlock?: string;
   monikers?: IGIDMonikerSet;
-  identity?: IGIDIdentity;
+  identities?: IGIDIdentity[];
 }
 
 export class GIDMembership implements IGIDMembership {
@@ -19,6 +19,6 @@ export class GIDMembership implements IGIDMembership {
     public tenantUserKey?: string,
     public tenantUserBlock?: string,
     public monikers?: IGIDMonikerSet,
-    public identity?: IGIDIdentity
+    public identities?: IGIDIdentity[]
   ) {}
 }

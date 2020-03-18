@@ -14,11 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="gid_moniker_set"/>
 
-        <addForeignKeyConstraint baseColumnNames="identity_id"
-                                 baseTableName="gid_membership"
-                                 constraintName="fk_gid_membership_identity_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="gid_identity"/>
-
     </changeSet>
 </databaseChangeLog>

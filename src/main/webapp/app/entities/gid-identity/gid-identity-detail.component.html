@@ -34,11 +34,11 @@
                         <a [routerLink]="['/gid-moniker-set', gIDIdentity.standardMonikerSet?.id, 'view']">{{ gIDIdentity.standardMonikerSet?.id }}</a>
                     </div>
                 </dd>
-                <dt><span>User</span></dt>
+                <dt><span>Memberships</span></dt>
                 <dd>
-                    <div *ngIf="gIDIdentity.user">
-                        <a [routerLink]="['/gid-user', gIDIdentity.user?.id, 'view']">{{ gIDIdentity.user?.firstName }}</a>
-                    </div>
+                    <span *ngFor="let memberships of gIDIdentity.memberships; let last = last">
+                        <a [routerLink]="['/gid-membership', memberships?.id, 'view']">{{ memberships.tenantKey }}</a>{{ last ? '' : ', ' }}
+                    </span>
                 </dd>
             </dl>
 

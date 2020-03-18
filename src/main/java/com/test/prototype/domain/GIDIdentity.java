@@ -1,6 +1,6 @@
 package com.test.prototype.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -40,12 +40,15 @@ public class GIDIdentity implements Serializable {
     @JoinColumn(unique = true)
     private GIDMonikerSet standardMonikerSet;
 
-    @OneToMany(mappedBy = "identity")
+    @ManyToMany
+    @JoinTable(name = "gid_identity_memberships",
+               joinColumns = @JoinColumn(name = "gididentity_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "memberships_id", referencedColumnName = "id"))
     private Set<GIDMembership> memberships = new HashSet<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties("identities")
-    private GIDUser user;
+    @ManyToMany(mappedBy = "identities")
+    @JsonIgnore
+    private Set<GIDUser> users = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -132,13 +135,13 @@ public class GIDIdentity implements Serializable {
 
     public GIDIdentity addMemberships(GIDMembership gIDMembership) {
         this.memberships.add(gIDMembership);
-        gIDMembership.setIdentity(this);
+        gIDMembership.getIdentities().add(this);
         return this;
     }
 
     public GIDIdentity removeMemberships(GIDMembership gIDMembership) {
         this.memberships.remove(gIDMembership);
-        gIDMembership.setIdentity(null);
+        gIDMembership.getIdentities().remove(this);
         return this;
     }
 
@@ -146,17 +149,29 @@ public class GIDIdentity implements Serializable {
         this.memberships = gIDMemberships;
     }
 
-    public GIDUser getUser() {
-        return user;
+    public Set<GIDUser> getUsers() {
+        return users;
     }
 
-    public GIDIdentity user(GIDUser gIDUser) {
-        this.user = gIDUser;
+    public GIDIdentity users(Set<GIDUser> gIDUsers) {
+        this.users = gIDUsers;
         return this;
     }
 
-    public void setUser(GIDUser gIDUser) {
-        this.user = gIDUser;
+    public GIDIdentity addUser(GIDUser gIDUser) {
+        this.users.add(gIDUser);
+        gIDUser.getIdentities().add(this);
+        return this;
+    }
+
+    public GIDIdentity removeUser(GIDUser gIDUser) {
+        this.users.remove(gIDUser);
+        gIDUser.getIdentities().remove(this);
+        return this;
+    }
+
+    public void setUsers(Set<GIDUser> gIDUsers) {
+        this.users = gIDUsers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
